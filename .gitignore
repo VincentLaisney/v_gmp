@@ -1,0 +1,8 @@
+# Binaries for programs and plugins
+main
+gmp
+*.exe
+*.exe~
+*.so
+*.dylib
+*.dll

@@ -152,6 +152,18 @@ pub fn (a Bigint) + (b Bigint) Bigint {
 	return d
 }
 
+[inline]
+pub fn (mut a Bigint) inc () {
+	b := a + from_u64(1)
+	set(mut a, b)
+}
+
+[inline]
+pub fn (mut a Bigint) dec () {
+	b := a - from_u64(1)
+	set(mut a, b)
+}
+
 // #define mpz_add_ui __gmpz_add_ui
 fn C.mpz_add_ui (&Bigint, &Bigint, u64)
 
@@ -592,7 +604,7 @@ pub fn gcdext (mut g Bigint, mut s Bigint, mut t Bigint, a Bigint, b Bigint) {
 // #define mpz_get_d __gmpz_get_d
 fn C.mpz_get_d (s &Bigint) f64
 
-pub fn get_f64(s Bigint) f64 {
+pub fn (s Bigint) f64() f64 {
 	return C.mpz_get_d(&s)
 }
 
@@ -607,14 +619,14 @@ pub fn get_d_2exp (e &i64, n Bigint) f64 {
 /* signed */ 
 fn C.mpz_get_si (s &Bigint) i64
 
-pub fn get_i64(s Bigint) i64 {
+pub fn (s Bigint) i64() i64 {
 	return C.mpz_get_si(&s)
 }
 
 // #define mpz_get_str __gmpz_get_str
 fn C.mpz_get_str (str &char , l int, s &Bigint) &char
 
-pub fn get_str(s Bigint, base int) string {
+pub fn (s Bigint) str_base (base int) string {
 	str_len := int(sizeinbase(&s, base)) + 2
 	mut n_str := []byte{len: str_len}
 	mut t_str := ''
@@ -626,12 +638,17 @@ unsafe {
 	return t_str
 }
 
+[inline]
+pub fn (s Bigint) str () string {
+	return s.str_base(10)
+}
+
 // #define mpz_get_ui __gmpz_get_ui
 // #if __GMP_INLINE_PROTOTYPES || defined (__GMP_FORCE_mpz_get_ui)
 fn C.mpz_get_ui (s &Bigint) u64
 // #endif
 
-pub fn get_u64 (s Bigint) u64 {
+pub fn (s Bigint) u64 () u64 {
 	return C.mpz_get_ui(&s)
 }
 
@@ -696,8 +713,15 @@ pub fn from_i64(i i64) Bigint {
 // #define mpz_init_set_str __gmpz_init_set_str
 fn C.mpz_init_set_str (d &Bigint, s &byte, l int) int 
 
-pub fn init_set_str (mut d Bigint, s string, base int) int  {
-	return C.mpz_init_set_str (&d, &char(s.str), base)
+pub fn from_str_base (s string, base int) Bigint  {
+	d := Bigint{}
+	C.mpz_init_set_str (&d, &char(s.str), base)
+	return d
+}
+
+[inline]
+pub fn from_str (s string) Bigint  {
+	return from_str_base(s, 10)
 }
 
 // #define mpz_init_set_ui __gmpz_init_set_ui
@@ -1000,6 +1024,12 @@ pub fn set (mut a Bigint, b Bigint) {
 	C.mpz_set (&a, &b)
 }
 
+pub fn (b Bigint) clone () Bigint {
+	mut a := new()
+	set (mut a, b)
+	return a
+}
+
 // #define mpz_set_d __gmpz_set_d
 fn C.mpz_set_d (&Bigint, f64)
 
@@ -1066,6 +1096,12 @@ fn C.mpz_sqrt (&Bigint,&Bigint)
 
 pub fn sqrt (mut s Bigint, a Bigint) {
 	C.mpz_sqrt (&s, &a)
+}
+
+pub fn (a Bigint) isqrt() Bigint {
+	mut d := new()
+	sqrt(mut d, a)
+	return d
 }
 
 // #define mpz_sqrtrem __gmpz_sqrtrem

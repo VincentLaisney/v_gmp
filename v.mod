@@ -1,7 +1,7 @@
 Module {
 	name: 'gmp'
-	description: 'binding to GMP'
-	version: '0.0.1'
-	license: 'Gnu'
+	description: 'Binding to GMP'
+	version: '0.0.2'
+	license: 'MIT'
 	dependencies: []
 }

@@ -1,7 +1,6 @@
 module gmp
 
 // Wrapper for https://github.com/kokke/tiny-bignum-c
-// #flag -I @VEXEROOT/thirdparty/bignum
 #flag -lgmp
 #flag -I @VMODROOT
 #include "gmp.h"

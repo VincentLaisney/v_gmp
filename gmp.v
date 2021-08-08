@@ -1,6 +1,5 @@
 module gmp
 
-// Wrapper for https://github.com/kokke/tiny-bignum-c
 #flag -lgmp
 #flag -I @VMODROOT
 #include "gmp.h"
@@ -30,6 +29,22 @@ mut:
 // type C.mpz_t = [1]C.__mpz_struct
 
 type Bigint = C.__mpz_struct
+
+fn C.mp_set_memory_functions (fn (u64) voidptr,
+				      fn (voidptr, u64, u64) voidptr,
+				      fn (voidptr, u64) voidptr)
+
+fn my_realloc (ptr &byte, old_size u64, new_size u64) &byte {
+	unsafe { return v_realloc (ptr, int(new_size)) }
+}
+
+fn my_free (ptr &byte, size u64) {
+	unsafe{ free (ptr) }
+}
+
+fn init() {
+	C.mp_set_memory_functions(malloc, my_realloc, my_free)
+}
 
 [unsafe]
 fn (mut b Bigint) free() {

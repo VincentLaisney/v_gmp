@@ -14,7 +14,9 @@ The operators + - * / % have been overloaded.
 ### Installation ###
 Install the GMP on your system (for the libgmp.a file).
 
-Create a gmp directory in your .vmodules and copy in it the gmp.v and *.h files.
+Locate your vmodules directory with `v doctor` command.
+
+Create a gmp directory in your vmodules directory and copy in it the gmp.v and *.h files.
 These header files have been patched for tcc and are necessary.
 
 ### License ###

@@ -1,4 +1,26 @@
 module gmp
+// MIT License
+
+// Copyright (c) 2021 Vincent Laisney
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
 // Porting of gmp multiprecision library to the V programming language (vlang)
 // Module for [V (Vlang)](https://vlang.io/) with most of the bindings of 
 // [gmp](https://gmplib.org/) for the BigIntegers. Functions beginning in mpz_
@@ -71,7 +93,7 @@ struct C.__gmp_randstate_struct
 //     void *_mp_lc;         /* Pointer to function pointers structure.  */
 //   } _mp_algdata;
 } 
-type Randstate = C.__gmp_randstate_struct 
+pub type Randstate = C.__gmp_randstate_struct 
 
 [unsafe]
 fn (mut b Randstate) free() {

@@ -515,25 +515,31 @@ pub fn divisible_2exp_p (n Bigint, b u64) int {
 // #define mpz_fac_ui __gmpz_fac_ui
 fn C.mpz_fac_ui (&Bigint, u64)
 
-/// fac_u64 is binding to mpz_fac_ui
-pub fn fac_u64 (mut r Bigint, n u64) {
-	C.mpz_fac_ui (&r, n)
+/// factorial is binding to mpz_fac_ui
+pub fn factorial (n u64) Bigint {
+	f := new()
+	C.mpz_fac_ui (&f, n)
+	return f
 }
 
 // #define mpz_2fac_ui __gmpz_2fac_ui
 fn C.mpz_2fac_ui (&Bigint, u64)
 
-/// two_fac_u64 is binding to mpz_2fac_ui
-pub fn two_fac_u64 (mut r Bigint, n u64) {
+/// double_factorial is binding to mpz_2fac_ui
+pub fn double_factorial (n u64) Bigint {
+	r := new()
 	C.mpz_2fac_ui (&r, n)
+	return r
 }
 
 // #define mpz_mfac_uiui __gmpz_mfac_uiui
 fn C.mpz_mfac_uiui (&Bigint, u64, u64)
 
-/// mfac_uiui is binding to mpz_mfac_uiui
-pub fn mfac_uiui (mut r Bigint, n u64, m u64) {
+/// multi_factorial is binding to mpz_mfac_uiui
+pub fn multi_factorial (n u64, m u64) Bigint {
+	r := new()
 	C.mpz_mfac_uiui (&r, n, m)
+	return r
 }
 
 // #define mpz_primorial_ui __gmpz_primorial_ui
@@ -619,9 +625,11 @@ pub fn fdiv_u64 (n Bigint, d u64) u64 {
 // #define mpz_fib_ui __gmpz_fib_ui
 fn C.mpz_fib_ui (&Bigint, u64)
 
-/// fib_u64 is binding to mpz_fib_ui
-pub fn fib_u64 (mut f Bigint, n u64) {
+/// fibonacci is binding to mpz_fib_ui
+pub fn fibonacci (n u64) Bigint {
+	f := new()
 	C.mpz_fib_ui (&f, n)
+	return f
 }
 
 // #define mpz_fib2_ui __gmpz_fib2_ui
@@ -1371,9 +1379,12 @@ pub fn tdiv_q_u64 (mut q Bigint, n Bigint, d u64) u64  {
 // #define mpz_tdiv_qr __gmpz_tdiv_qr
 fn C.mpz_tdiv_qr (&Bigint, &Bigint, &Bigint, &Bigint)
 
-/// tdiv_qr is binding to mpz_tdiv_qr
-pub fn tdiv_qr (mut q Bigint, mut r Bigint, n Bigint, d Bigint) {
+/// divmod is binding to mpz_tdiv_qr
+pub fn divmod (n Bigint, d Bigint) (Bigint, Bigint) {
+	q := new()
+	r := new()
 	C.mpz_tdiv_qr (&q, &r, &n, &d)
+	return q, r
 }
 
 // #define mpz_tdiv_qr_ui __gmpz_tdiv_qr_ui

@@ -195,7 +195,7 @@ fn test_divide() {
 	b = gmp.from_str('281474976710656')
 	assert '${a / b}' == '43860'
 	a = gmp.from_str('12345678901234567890')
-	// gmp.mul_2exp(mut a, a, -48)
+	// gmp.mul_2exp(mut b, a, -48) // mul_2exp accept only unsigned shift
 	// assert '${a}' == '43860'
 }
 
@@ -213,7 +213,7 @@ fn test_mod() {
 	assert ((gmp.from_u64(13) % gmp.from_u64(9)).i64()) == 4
 	assert ((gmp.from_u64(7) % gmp.from_u64(5)).i64()) == 2
 }
-/*
+
 fn test_divmod() {
 	x, y := gmp.divmod(gmp.from_u64(13), gmp.from_u64(10))
 	assert x.i64() == 1
@@ -246,7 +246,7 @@ fn test_divide_mod() {
 	divide_mod_inner(1 << 8, 1 << 8)
 	divide_mod_inner(-1 << 8, 1 << 4)
 }
-*/
+
 fn divide_mod_inner(a int, b int) {
 	a_big := gmp.from_i64(a)
 	b_big := gmp.from_i64(b)
@@ -265,14 +265,72 @@ fn test_power () {
 	a = a.power(5)
 	assert '$a' == '-147008443'
 }
-/*
+
+fn test_ceil_div() {
+
+	mut a := gmp.from_i64(495943893)
+	mut b := gmp.from_i64(594837)
+	mut c := gmp.new()
+	gmp.cdiv_q(mut c, a, b)
+	assert '${c}' == '834'
+	a = gmp.from_i64(-938206328)
+	b = gmp.from_i64(85943)
+	gmp.cdiv_q(mut c, a, b)
+	assert '${c}' == '-10916'
+}
+
+fn test_floor_div() {
+	mut a := gmp.from_i64(495943893)
+	mut b := gmp.from_i64(594837)
+	mut c := gmp.new()
+	gmp.fdiv_q(mut c, a, b)
+	assert '${c}' == '833'
+	a = gmp.from_i64(-938206328)
+	b = gmp.from_i64(85943)
+	gmp.fdiv_q(mut c, a, b)
+	assert '${c}' == '-10917'
+}
+fn test_trunc_div() {
+	mut a := gmp.from_i64(495943893)
+	mut b := gmp.from_i64(594837)
+	mut c := gmp.new()
+	c = a / b // is mpz_tdiv_q
+	assert '${c}' == '833'
+	a = gmp.from_i64(-938206328)
+	b = gmp.from_i64(85943)
+	c = a / b // is mpz_tdiv_q
+	assert '${c}' == '-10916'
+}
+
 fn test_factorial() {
 	f5 := gmp.factorial(5)
 	assert f5.str_base (16) == '78'
 	f100 := gmp.factorial(100)
 	assert f100.str_base (16) == '1b30964ec395dc24069528d54bbda40d16e966ef9a70eb21b5b2943a321cdf10391745570cca9420c6ecb3b72ed2ee8b02ea2735c61a000000000000000000000000'
 }
-*/
+
+fn test_double_factorial()   {
+	ff5 := gmp.double_factorial(5)
+	assert ff5.str() == '15'
+	ff10 := gmp.double_factorial(10)
+	assert ff10.str() == '3840'
+	assert '${gmp.double_factorial(134)}' == '5382185993533606831408011282180680789400284994444766970938526050778069191357422369838651827831177216000000000000000'
+}
+
+fn test_multifactorial() {
+	r := gmp.multi_factorial(25, 4)
+	assert '${r}' == '5221125'
+	s := gmp.multi_factorial(120, 7)
+	assert '${s}' == '133216545928064507382988800000'
+
+}
+
+fn test_fibonacci() {
+	r := gmp.fibonacci(12) 
+	assert '$r' == '144'
+	s := gmp.fibonacci(131) 
+	assert '$s' == '1066340417491710595814572169'
+}
 // fn trimbytes(n int, x []byte) []byte {
 // 	mut res := x.clone()
 // 	res.trim(n)

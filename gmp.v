@@ -206,13 +206,13 @@ pub fn (a Bigint) + (b Bigint) Bigint {
 [inline]
 pub fn (mut a Bigint) inc () {
 	b := a + from_u64(1)
-	a = set(b)
+	set(mut a, b)
 }
 
 [inline]
 pub fn (mut a Bigint) dec () {
 	b := a - from_u64(1)
-	a = set(b)
+	set(mut a, b)
 }
 
 // #define mpz_add_ui __gmpz_add_ui
@@ -1288,14 +1288,13 @@ pub fn scan1 (s Bigint, n u64) u64  {
 fn C.mpz_set (&Bigint, &Bigint)
 
 /// set is binding to mpz_set
-pub fn set (b Bigint) Bigint {
-	a := new()
+pub fn set (mut a Bigint, b Bigint) {
 	C.mpz_set (&a, &b)
-	return a
 }
 
 pub fn (b Bigint) clone () Bigint {
-	a := set (b)
+	mut a := new()
+	set (mut a, b)
 	return a
 }
 

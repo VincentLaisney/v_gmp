@@ -1,5 +1,5 @@
 // not used _test.v in the name to avoid crashes during general testing
-module gmp
+import gmp
 
 fn test_div_zero () {
 	a := gmp.from_f64(541.3)
@@ -7,6 +7,6 @@ fn test_div_zero () {
 	b := gmp.new()
 	assert '$b' == '0'
 	c := a / b
-	assert '$c' == '0'
+	assert '$c' == 'inf'
 }
 

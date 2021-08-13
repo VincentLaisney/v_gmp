@@ -1,5 +1,6 @@
 // gmp_test.v
 import gmp
+import os
 
 fn test_new_big() {
 	n := gmp.new()
@@ -197,14 +198,16 @@ fn test_divide() {
 	// gmp.mul_2exp(mut a, a, -48)
 	// assert '${a}' == '43860'
 }
-/*
-// fn test_div_zero () {
-// 	vexe := os.getenv('VEXE')
-// 	test_file := 'gmp_div_zero.v'
-// 	test := os.execute('$vexe $test_file &> /dev/null')
-// 	assert test.exit_code == 1
-// }
-*/
+
+fn test_div_zero () {
+	vexe := os.getenv('VEXE')
+	test_file := 'tests/gmp_div_zero_test.v'
+	test := os.execute('$vexe $test_file')
+	assert test.exit_code == 1
+	// print(test.output)
+	test.output.contains('V panic: Division by zero')
+}
+
 fn test_mod() {
 	assert ((gmp.from_u64(13) % gmp.from_u64(10)).i64()) == 3
 	assert ((gmp.from_u64(13) % gmp.from_u64(9)).i64()) == 4

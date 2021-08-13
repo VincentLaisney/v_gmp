@@ -270,24 +270,22 @@ fn test_ceil_div() {
 
 	mut a := gmp.from_i64(495943893)
 	mut b := gmp.from_i64(594837)
-	mut c := gmp.new()
-	gmp.cdiv_q(mut c, a, b)
+	mut c := gmp.cdiv_q(a, b)
 	assert '${c}' == '834'
 	a = gmp.from_i64(-938206328)
 	b = gmp.from_i64(85943)
-	gmp.cdiv_q(mut c, a, b)
+	c = gmp.cdiv_q(a, b)
 	assert '${c}' == '-10916'
 }
 
 fn test_floor_div() {
 	mut a := gmp.from_i64(495943893)
 	mut b := gmp.from_i64(594837)
-	mut c := gmp.new()
-	gmp.fdiv_q(mut c, a, b)
+	mut c := gmp.fdiv_q(a, b)
 	assert '${c}' == '833'
 	a = gmp.from_i64(-938206328)
 	b = gmp.from_i64(85943)
-	gmp.fdiv_q(mut c, a, b)
+	c = gmp.fdiv_q(a, b)
 	assert '${c}' == '-10917'
 }
 fn test_trunc_div() {
@@ -302,6 +300,19 @@ fn test_trunc_div() {
 	assert '${c}' == '-10916'
 }
 
+fn test_sqrt() {
+	a := gmp.from_str('9384755736203914')
+	b := gmp.isqrt(a)
+	assert '${b}' == '96874948'
+}
+
+fn test_sqrtrem() {
+	a := gmp.from_str('9384755736203914')
+	b, r := gmp.sqrt_rem(a)
+	assert '${b} ${r}' == '96874948 186201210'
+
+}
+
 fn test_factorial() {
 	f5 := gmp.factorial(5)
 	assert f5.str_base (16) == '78'
@@ -310,8 +321,8 @@ fn test_factorial() {
 }
 
 fn test_double_factorial()   {
-	ff5 := gmp.double_factorial(5)
-	assert ff5.str() == '15'
+	ff5 := gmp.double_factorial(94)
+	assert ff5.str() == '36397985440595212848901395509362442575593829776487243652121231360000000000'
 	ff10 := gmp.double_factorial(10)
 	assert ff10.str() == '3840'
 	assert '${gmp.double_factorial(134)}' == '5382185993533606831408011282180680789400284994444766970938526050778069191357422369838651827831177216000000000000000'
@@ -331,6 +342,24 @@ fn test_fibonacci() {
 	s := gmp.fibonacci(131) 
 	assert '$s' == '1066340417491710595814572169'
 }
+
+fn test_primorial() {
+	p := gmp.primorial(147)
+	assert '${p}' == '10014646650599190067509233131649940057366334653200433090'
+}
+
+fn test_lucas_num() {
+	l := gmp.lucas_num(45)
+	assert '${l}' == '2537720636'
+}
+
+fn test_lucas_num2() {
+	l, m := gmp.lucas_num2(27)
+	assert '${l} ${m}' == '439204 271443'
+	n, o := gmp.lucas_num2(72)
+	assert '${n} ${o}' == '1114577054219522 688846502588399'
+}
+
 // fn trimbytes(n int, x []byte) []byte {
 // 	mut res := x.clone()
 // 	res.trim(n)

@@ -23,6 +23,44 @@ fn test_from_u64() {
 	assert gmp.from_u64(-1).str_base (16) == 'ffffffffffffffff'
 }
 
+fn test_from_str() {
+	assert gmp.from_str('9870123').str() == '9870123'
+	assert gmp.from_str('').str() == '0'
+	assert gmp.from_str('0').str() == '0'
+	assert gmp.from_str('1').str() == '1'
+	for i := 1; i < 307; i += 61 {
+		input := '9'.repeat(i)
+		out := gmp.from_str(input).str()
+		// eprintln('>> i: $i input: $input.str()')
+		// eprintln('>> i: $i   out: $out.str()')
+		assert input == out
+	}
+}
+
+fn test_from_hex_str() {
+	// use base 0 to interpret 0x, 0b and 0 for hexa, binary and octal
+	assert gmp.from_str_base('0x123', 0).str_base (16) == '123'
+	assert gmp.from_str_base('0b110011', 0).str_base (2) == '110011'
+	assert gmp.from_str_base('0123', 0).str_base (8) == '123'
+	for i in 1 .. 33 {
+		input := 'e'.repeat(i)
+		out := gmp.from_str_base(input, 16).str_base (16)
+		assert input == out
+	}
+	assert gmp.from_str('0').str_base (16) == '0'
+}
+
+fn test_str() {
+	assert gmp.from_u64(255).str() == '255'
+	assert gmp.from_u64(127).str() == '127'
+	assert gmp.from_u64(1024).str() == '1024'
+	assert gmp.from_u64(4294967295).str() == '4294967295'
+	assert gmp.from_u64(4398046511104).str() == '4398046511104'
+	// assert gmp.from_i64(int(4294967295)).str() == '18446744073709551615'
+	// assert gmp.from_i64(-1).str() == '18446744073709551615'
+	assert gmp.from_str_base('e'.repeat(80), 16).str() == '1993587900192849410235353592424915306962524220866209251950572167300738410728597846688097947807470'
+}
+
 fn test_plus() {
 	mut a := gmp.from_u64(2)
 	mut b := gmp.from_u64(3)
@@ -88,25 +126,22 @@ fn test_minus() {
 	assert '${a - b}' == '0'
 }
 
-fn test_divide() {
-	mut a := gmp.from_u64(2)
-	mut b := gmp.from_u64(3)
-	c := b / a
-	assert c.str_base (16) == '1'
-	assert (b % a).str_base (16) == '1'
-	e := gmp.from_u64(1024) // dec(1024) == hex(0x400)
-	ee := e / e
-	assert ee.str_base (16) == '1'
-	assert (e / a).str_base (16) == '200'
-	assert (e / (a * a)).str_base (16) == '100'
-	b /= a
-	assert b.str_base (16) == '1'
-	a = gmp.from_str('12345678901234567890')
-	b = gmp.from_str('281474976710656')
-	assert '${a / b}' == '43860'
-	a = gmp.from_str('12345678901234567890')
-	// gmp.mul_2exp(mut a, a, -48)
-	// assert '${a}' == '43860'
+fn test_neg () {
+	mut a := gmp.from_u64(3847)
+	a = gmp.neg(a)
+	assert '$a' == '-3847'
+	a = gmp.from_i64(-951305)
+	a = gmp.neg(a)
+	assert '$a' == '951305'
+}
+
+fn test_cmp () {
+	a := gmp.from_str('4758')
+	b := gmp.from_str('3948')
+	c := gmp.from_i64(4758)
+	assert gmp.cmp(a, b) > 0
+	assert gmp.cmp(b, c) < 0
+	assert gmp.cmp(a, c) == 0
 }
 
 fn test_multiply() {
@@ -142,6 +177,34 @@ fn test_multiply() {
 	// assert '${a * b}' == '222399979596943177756407917979893760'
 }
 
+fn test_divide() {
+	mut a := gmp.from_u64(2)
+	mut b := gmp.from_u64(3)
+	c := b / a
+	assert c.str_base (16) == '1'
+	assert (b % a).str_base (16) == '1'
+	e := gmp.from_u64(1024) // dec(1024) == hex(0x400)
+	ee := e / e
+	assert ee.str_base (16) == '1'
+	assert (e / a).str_base (16) == '200'
+	assert (e / (a * a)).str_base (16) == '100'
+	b /= a
+	assert b.str_base (16) == '1'
+	a = gmp.from_str('12345678901234567890')
+	b = gmp.from_str('281474976710656')
+	assert '${a / b}' == '43860'
+	a = gmp.from_str('12345678901234567890')
+	// gmp.mul_2exp(mut a, a, -48)
+	// assert '${a}' == '43860'
+}
+/*
+// fn test_div_zero () {
+// 	vexe := os.getenv('VEXE')
+// 	test_file := 'gmp_div_zero.v'
+// 	test := os.execute('$vexe $test_file &> /dev/null')
+// 	assert test.exit_code == 1
+// }
+*/
 fn test_mod() {
 	assert ((gmp.from_u64(13) % gmp.from_u64(10)).i64()) == 3
 	assert ((gmp.from_u64(13) % gmp.from_u64(9)).i64()) == 4
@@ -189,42 +252,15 @@ fn divide_mod_inner(a int, b int) {
 	assert '${a_big % b_big}' == '${a % b}'
 }
 
-fn test_from_str() {
-	assert gmp.from_str('9870123').str() == '9870123'
-	assert gmp.from_str('').str() == '0'
-	assert gmp.from_str('0').str() == '0'
-	assert gmp.from_str('1').str() == '1'
-	for i := 1; i < 307; i += 61 {
-		input := '9'.repeat(i)
-		out := gmp.from_str(input).str()
-		// eprintln('>> i: $i input: $input.str()')
-		// eprintln('>> i: $i   out: $out.str()')
-		assert input == out
-	}
-}
 
-fn test_from_hex_str() {
-	// use base 0 to interpret 0x, 0b and 0 for hexa, binary and octal
-	assert gmp.from_str_base('0x123', 0).str_base (16) == '123'
-	assert gmp.from_str_base('0b110011', 0).str_base (2) == '110011'
-	assert gmp.from_str_base('0123', 0).str_base (8) == '123'
-	for i in 1 .. 33 {
-		input := 'e'.repeat(i)
-		out := gmp.from_str_base(input, 16).str_base (16)
-		assert input == out
-	}
-	assert gmp.from_str('0').str_base (16) == '0'
-}
-
-fn test_str() {
-	assert gmp.from_u64(255).str() == '255'
-	assert gmp.from_u64(127).str() == '127'
-	assert gmp.from_u64(1024).str() == '1024'
-	assert gmp.from_u64(4294967295).str() == '4294967295'
-	assert gmp.from_u64(4398046511104).str() == '4398046511104'
-	// assert gmp.from_i64(int(4294967295)).str() == '18446744073709551615'
-	// assert gmp.from_i64(-1).str() == '18446744073709551615'
-	assert gmp.from_str_base('e'.repeat(80), 16).str() == '1993587900192849410235353592424915306962524220866209251950572167300738410728597846688097947807470'
+fn test_power () {
+	mut a := gmp.from_u64(5)
+	a = a.power(6)
+	assert '$a' == '15625'
+	
+	a = gmp.from_i64(-43)
+	a = a.power(5)
+	assert '$a' == '-147008443'
 }
 /*
 fn test_factorial() {

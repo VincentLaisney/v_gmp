@@ -1015,8 +1015,10 @@ pub fn mul_u64 (mut r Bigint, a Bigint, b u64) {
 fn C.mpz_neg (&Bigint, &Bigint)
 
 /// neg is binding to mpz_neg
-pub fn neg (mut r Bigint, a Bigint) {
+pub fn neg (a Bigint) Bigint {
+	r := new()
 	C.mpz_neg (&r, &a)
+	return r
 }
 // #endif
 
@@ -1069,9 +1071,11 @@ pub fn popcount (s Bigint) u64  {
 // #define mpz_pow_ui __gmpz_pow_ui
 fn C.mpz_pow_ui (&Bigint, &Bigint, u64)
 
-/// pow_u64 is binding to mpz_pow_ui
-pub fn pow_u64 (mut r Bigint, b Bigint, e u64) {
+/// power is binding to mpz_pow_ui
+pub fn (b Bigint) power (e u64) Bigint {
+	r := new()
 	C.mpz_pow_ui (&r, &b, e)
+	return r
 }
 
 // #define mpz_powm __gmpz_powm
@@ -1340,6 +1344,9 @@ fn C.mpz_tdiv_q (&Bigint, &Bigint, &Bigint)
 
 /// / is binding to mpz_tdiv_q
 pub fn (n Bigint) / (d Bigint) Bigint {
+	if cmp(d, from_u64(0)) == 0 {
+		panic('Division by zero')
+	}
 	q := new()
 	C.mpz_tdiv_q (&q, &n, &d)
 	return q

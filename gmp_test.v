@@ -25,30 +25,71 @@ fn test_from_u64() {
 }
 
 fn test_from_str() {
-	assert gmp.from_str('9870123').str() == '9870123'
-	assert gmp.from_str('').str() == '0'
-	assert gmp.from_str('0').str() == '0'
-	assert gmp.from_str('1').str() == '1'
+	mut a := gmp.from_str('9870123') or {panic('Invalid number')}
+	assert a.str() == '9870123'
+	a = gmp.from_str('0') or {panic('Invalid number')}
+	assert a.str() == '0'
+	a = gmp.from_str('1') or {panic('Invalid number')}
+	assert a.str() == '1'
 	for i := 1; i < 307; i += 61 {
 		input := '9'.repeat(i)
-		out := gmp.from_str(input).str()
+		out := gmp.from_str(input) or {panic('Invalid number')}
+		out_str := out.str()
 		// eprintln('>> i: $i input: $input.str()')
 		// eprintln('>> i: $i   out: $out.str()')
-		assert input == out
+		assert input == out_str
+	}
+}
+
+fn test_invalid_str() ? {
+	if x := gmp.from_str('str') {
+		println(x.str())
+		assert false
+	} else {
+		assert true
+	}
+	if x := gmp.from_str('') {
+		println(x.str())
+		assert false
+	} else {
+		assert true
+	}
+	if x := gmp.from_str('NaN') {
+		println(x.str())
+		assert false
+	} else {
+		assert true
+	}
+	if x := gmp.from_str_base('1498', 8) { // illegal character
+		println(x.str())
+		assert false
+	} else {
+		assert true
+	}
+	if x := gmp.from_str_base('49bed82g', 16) { // id
+		println(x.str())
+		assert false
+	} else {
+		assert true
 	}
 }
 
 fn test_from_hex_str() {
 	// use base 0 to interpret 0x, 0b and 0 for hexa, binary and octal
-	assert gmp.from_str_base('0x123', 0).str_base (16) == '123'
-	assert gmp.from_str_base('0b110011', 0).str_base (2) == '110011'
-	assert gmp.from_str_base('0123', 0).str_base (8) == '123'
+	mut a := gmp.from_str_base('0x123', 0) or {panic('Invalid number')}
+	assert a.str_base (16) == '123'
+	a = gmp.from_str_base('0b110011', 0) or {panic('Invalid number')}
+	assert a.str_base (2) == '110011'
+	a = gmp.from_str_base('0123', 0) or {panic('Invalid number')}
+	assert a.str_base (8) == '123'
 	for i in 1 .. 33 {
 		input := 'e'.repeat(i)
-		out := gmp.from_str_base(input, 16).str_base (16)
-		assert input == out
+		out := gmp.from_str_base(input, 16) or {panic('Invalid number')}
+		out_str := out.str_base (16)
+		assert input == out_str
 	}
-	assert gmp.from_str('0').str_base (16) == '0'
+	a = gmp.from_str('0') or {panic('Invalid number')}
+	assert a.str_base (16) == '0'
 }
 
 fn test_str() {
@@ -59,7 +100,8 @@ fn test_str() {
 	assert gmp.from_u64(4398046511104).str() == '4398046511104'
 	// assert gmp.from_i64(int(4294967295)).str() == '18446744073709551615'
 	// assert gmp.from_i64(-1).str() == '18446744073709551615'
-	assert gmp.from_str_base('e'.repeat(80), 16).str() == '1993587900192849410235353592424915306962524220866209251950572167300738410728597846688097947807470'
+	a := gmp.from_str_base('e'.repeat(80), 16) or {panic('Invalid number')}
+	assert a.str() == '1993587900192849410235353592424915306962524220866209251950572167300738410728597846688097947807470'
 }
 
 fn test_plus() {
@@ -75,23 +117,23 @@ fn test_plus() {
 	a.dec()
 	a.dec()
 	assert a.str_base (16) == '4'
-	a = gmp.from_str('8337839423')
-	b = gmp.from_str('9683495887')
+	a = gmp.from_str('8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('9683495887') or {panic('Invalid number')}
 	assert '${b + a}' == '18021335310'
-	a = gmp.from_str('-8337839423')
-	b = gmp.from_str('9683495887')
+	a = gmp.from_str('-8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('9683495887') or {panic('Invalid number')}
 	assert '${b + a}' == '1345656464'
-	a = gmp.from_str('8337839423')
-	b = gmp.from_str('-9683495887')
+	a = gmp.from_str('8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('-9683495887') or {panic('Invalid number')}
 	assert '${b + a}' == '-1345656464'
-	a = gmp.from_str('-8337839423')
-	b = gmp.from_str('-9683495887')
+	a = gmp.from_str('-8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('-9683495887') or {panic('Invalid number')}
 	assert '${b + a}' == '-18021335310'
-	a = gmp.from_str('-8337839423')
-	b = gmp.from_str('8337839423')
+	a = gmp.from_str('-8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('8337839423') or {panic('Invalid number')}
 	assert '${b + a}' == '0'
-	a = gmp.from_str('8337839423')
-	b = gmp.from_str('-8337839423')
+	a = gmp.from_str('8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('-8337839423') or {panic('Invalid number')}
 	assert '${b + a}' == '0'
 }
 
@@ -105,24 +147,24 @@ fn test_minus() {
 	assert ee.str_base (16) == '0'
 	b -= a
 	assert b.str_base (16) == '1'
-	a = gmp.from_str('8337839423')
-	b = gmp.from_str('9683495887')
+	a = gmp.from_str('8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('9683495887') or {panic('Invalid number')}
 	assert '${b - a}' == '1345656464'
 	assert '${a - b}' == '-1345656464'
-	a = gmp.from_str('-8337839423')
-	b = gmp.from_str('-9683495887')
+	a = gmp.from_str('-8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('-9683495887') or {panic('Invalid number')}
 	assert '${b - a}' == '-1345656464'
 	assert '${a - b}' == '1345656464'
-	a = gmp.from_str('-8337839423')
-	b = gmp.from_str('9683495887')
+	a = gmp.from_str('-8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('9683495887') or {panic('Invalid number')}
 	assert '${b - a}' == '18021335310'
 	assert '${a - b}' == '-18021335310'
-	a = gmp.from_str('-8337839423')
-	b = gmp.from_str('-8337839423')
+	a = gmp.from_str('-8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('-8337839423') or {panic('Invalid number')}
 	assert '${b - a}' == '0'
 	assert '${a - b}' == '0'
-	a = gmp.from_str('8337839423')
-	b = gmp.from_str('8337839423')
+	a = gmp.from_str('8337839423') or {panic('Invalid number')}
+	b = gmp.from_str('8337839423') or {panic('Invalid number')}
 	assert '${b - a}' == '0'
 	assert '${a - b}' == '0'
 }
@@ -137,8 +179,8 @@ fn test_neg () {
 }
 
 fn test_cmp () {
-	a := gmp.from_str('4758')
-	b := gmp.from_str('3948')
+	a := gmp.from_str('4758') or {panic('Invalid number')}
+	b := gmp.from_str('3948') or {panic('Invalid number')}
 	c := gmp.from_i64(4758)
 	assert gmp.cmp(a, b) > 0
 	assert gmp.cmp(b, c) < 0
@@ -162,18 +204,18 @@ fn test_multiply() {
 	assert d.str_base (16) == '60000000000000000000c00000000000000000018'
 	a *= b
 	assert a.str_base (16) == '6'
-	a = gmp.from_str('12345678901234567890')
-	b = gmp.from_str('98765432109876543210')
+	a = gmp.from_str('12345678901234567890') or {panic('Invalid number')}
+	b = gmp.from_str('98765432109876543210') or {panic('Invalid number')}
 	assert '${a * b}' == '1219326311370217952237463801111263526900'
-	a = gmp.from_str('12345678901234567890')
-	b = gmp.from_str('281474976710656')
+	a = gmp.from_str('12345678901234567890') or {panic('Invalid number')}
+	b = gmp.from_str('281474976710656') or {panic('Invalid number')}
 	assert '${a * b}' == '3474999681202237152443873718435840'
-	// a = gmp.from_str('12345678901234567890')
+	// a = gmp.from_str('12345678901234567890') or {panic('Invalid number')}
 	// gmp.mul_2exp(mut a, a, 48)
 	// assert '${a}' == '3474999681202237152443873718435840'
-	// a = gmp.from_str('12345678901234567890')
+	// a = gmp.from_str('12345678901234567890') or {panic('Invalid number')}
 	// gmp.mul_2exp(mut a, a, 2) // lshift(2)
-	// b = gmp.from_str('281474976710656')
+	// b = gmp.from_str('281474976710656') or {panic('Invalid number')}
 	// gmp.mul_2exp(mut b, b, 4)
 	// assert '${a * b}' == '222399979596943177756407917979893760'
 }
@@ -191,10 +233,10 @@ fn test_divide() {
 	assert (e / (a * a)).str_base (16) == '100'
 	b /= a
 	assert b.str_base (16) == '1'
-	a = gmp.from_str('12345678901234567890')
-	b = gmp.from_str('281474976710656')
+	a = gmp.from_str('12345678901234567890') or {panic('Invalid number')}
+	b = gmp.from_str('281474976710656') or {panic('Invalid number')}
 	assert '${a / b}' == '43860'
-	a = gmp.from_str('12345678901234567890')
+	a = gmp.from_str('12345678901234567890') or {panic('Invalid number')}
 	// gmp.mul_2exp(mut b, a, -48) // mul_2exp accept only unsigned shift
 	// assert '${a}' == '43860'
 }
@@ -227,8 +269,8 @@ fn test_divmod() {
 }
 
 fn test_divide_mod_big() {
-	a := gmp.from_str('987654312345678901234567890')
-	b := gmp.from_str('98765432109876543210')
+	a := gmp.from_str('987654312345678901234567890') or {panic('Invalid number')}
+	b := gmp.from_str('98765432109876543210') or {panic('Invalid number')}
 
 	assert '${a / b}' == '9999999'
 	assert '${a % b}' == '90012345579011111100'
@@ -301,13 +343,13 @@ fn test_trunc_div() {
 }
 
 fn test_sqrt() {
-	a := gmp.from_str('9384755736203914')
+	a := gmp.from_str('9384755736203914') or {panic('Invalid number')}
 	b := gmp.isqrt(a)
 	assert '${b}' == '96874948'
 }
 
 fn test_sqrtrem() {
-	a := gmp.from_str('9384755736203914')
+	a := gmp.from_str('9384755736203914') or {panic('Invalid number')}
 	b, r := gmp.sqrt_rem(a)
 	assert '${b} ${r}' == '96874948 186201210'
 

@@ -903,15 +903,18 @@ pub fn from_i64(i i64) Bigint {
 fn C.mpz_init_set_str (d &Bigint, s &byte, l int) int 
 
 /// from_str_base is binding to mpz_init_set_str
-pub fn from_str_base (s string, base int) Bigint  {
+pub fn from_str_base (s string, base int) ?Bigint  {
 	d := Bigint{}
-	C.mpz_init_set_str (&d, &char(s.str), base)
-	return d
+	if C.mpz_init_set_str (&d, &char(s.str), base) == 0 {
+		return d
+	} else {
+		return error('Invalid number string')
+	}
 }
 
 // from_str is binding to mpz_init_set_str with default decimal base
 [inline]
-pub fn from_str (s string) Bigint  {
+pub fn from_str (s string) ?Bigint  {
 	return from_str_base(s, 10)
 }
 
@@ -1336,10 +1339,8 @@ pub fn set_i64 (b i64) Bigint {
 fn C.mpz_set_str (&Bigint, &char, int) int 
 
 /// set_str is binding to mpz_set_str
-pub fn set_str (s string, base int) (Bigint, int)  {
-	a := new()
-	res := C.mpz_set_str (&a, &char(s.str), base)
-	return a, res
+pub fn set_str (mut a Bigint, s string, base int) int  {
+	return C.mpz_set_str (&a, &char(s.str), base)
 }
 
 // #define mpz_set_ui __gmpz_set_ui

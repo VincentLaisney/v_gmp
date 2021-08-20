@@ -402,24 +402,27 @@ fn test_lucas_num2() {
 	assert '${n} ${o}' == '1114577054219522 688846502588399'
 }
 
-// fn trimbytes(n int, x []byte) []byte {
-// 	mut res := x.clone()
-// 	res.trim(n)
-// 	return res
-// }
+fn test_export_import() {
+	n := gmp.from_str('4773753683898985936405984512709') or {panic('export')}
+	bits := gmp.sizeinbase(n, 2)
+	// from mpz manual
+	size := sizeof(byte) // 1
+	numb := 8*size // - nail
+	count := int((bits + numb-1) / numb)
+	// p = malloc (count * size)
+	buf := &[]byte{len:count}
+	res_count := u64(0)
+	res := gmp.export(buf.data, &res_count, 1, size, 0, 0, n)
+	unsafe { assert res == buf.data }
+	assert res_count == count
+	// println(buf)
+	// for i in buf {
+	// 	print('0x${i.hex_full()}, ')
+	// }
+	// print('\n')
 
-// fn test_bytes() {
-// 	assert gmp.from_i64(0).bytes().len == 128
-// 	assert gmp.from_hex_string('e'.repeat(100)).bytes().len == 128
-// 	assert trimbytes(3, gmp.from_i64(1).bytes()) == [byte(0x01), 0x00, 0x00]
-// 	assert trimbytes(3, gmp.from_i64(1024).bytes()) == [byte(0x00), 0x04, 0x00]
-// 	assert trimbytes(3, gmp.from_i64(1048576).bytes()) == [byte(0x00), 0x00, 0x10]
-// }
-
-// fn test_bytes_trimmed() {
-// 	assert gmp.from_i64(0).bytes_trimmed().len == 0
-// 	assert gmp.from_hex_string('AB'.repeat(50)).bytes_trimmed().len == 50
-// 	assert gmp.from_i64(1).bytes_trimmed() == [byte(0x01)]
-// 	assert gmp.from_i64(1024).bytes_trimmed() == [byte(0x00), 0x04]
-// 	assert gmp.from_i64(1048576).bytes_trimmed() == [byte(0x00), 0x00, 0x10]
-// }
+	m := gmp.mpz_import(res_count, 1, size, 0, 0, buf.data)
+	assert gmp.cmp(m, n) == 0
+	m_str := m.str()
+	assert m_str == '4773753683898985936405984512709'
+}

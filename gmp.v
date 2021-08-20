@@ -541,7 +541,11 @@ pub fn divisible_2exp_p (n Bigint, b u64) int {
 // fn C.dump (Bigint) void
 
 // #define mpz_export __gmpz_export
-// fn C.mpz_export (void *, size_t *, int, size_t, int, size_t, Bigint)
+fn C.mpz_export (voidptr, &u64, int, u64, int, u64, &Bigint) voidptr
+
+pub fn export (ret &byte, count &u64, order int, size u64, endian int, nails u64, a Bigint) voidptr {
+	return C.mpz_export (ret, count, order, size, endian, nails, &a)
+}
 
 // #define mpz_fac_ui __gmpz_fac_ui
 fn C.mpz_fac_ui (&Bigint, u64)
@@ -850,7 +854,13 @@ pub fn hamdist (a Bigint, b Bigint) u64 {
 }
 
 // #define mpz_import __gmpz_import
-// fn C.import (Bigint, size_t, int, size_t, int, size_t, const void *)
+fn C.mpz_import (&Bigint, u64, int, u64, int, u64, voidptr)
+
+pub fn mpz_import (count u64, order int, size u64, endian int, nails u64, buf &byte) Bigint {
+	a := new()
+	C.mpz_import (&a, count, order, size, endian, nails, buf)
+	return a
+}
 
 // #define mpz_init __gmpz_init
 fn C.mpz_init (s &Bigint)

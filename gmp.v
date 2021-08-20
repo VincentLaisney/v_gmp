@@ -32,15 +32,15 @@ type Bigint = C.__mpz_struct
 
 struct C.__mpf_struct
 {
-//   int _mp_prec;			/* Max precision, in number of `mp_limb_t's.
-// 				   Set by mpf_init and modified by
-// 				   mpf_set_prec.  The area pointed to by the
-// 				   _mp_d field contains `prec' + 1 limbs.  */
-//   int _mp_size;			/* abs(_mp_size) is the number of limbs the
-// 				   last field points to.  If _mp_size is
-// 				   negative this is a negative number.  */
-//   mp_exp_t _mp_exp;		/* Exponent, in the base of `mp_limb_t'.  */
-//   mp_limb_t *_mp_d;		/* Pointer to the limbs.  */
+	_mp_prec int		/* Max precision, in number of `mp_limb_t's.
+					Set by mpf_init and modified by
+					mpf_set_prec.  The area pointed to by the
+					_mp_d field contains `prec' + 1 limbs.  */
+	_mp_size int			/* abs(_mp_size) is the number of limbs the
+					last field points to.  If _mp_size is
+					negative this is a negative number.  */
+	_mp_exp i64		/* Exponent, in the base of `mp_limb_t'.  */
+	_mp_d &u64		/* Pointer to the limbs.  */
 } 
 
 /* typedef __mpf_struct MP_FLOAT; */
@@ -237,7 +237,9 @@ pub fn urandomm_ui (mut s Randstate, n u64) u64 {
 
 fn C.mpz_abs(d &Bigint, s &Bigint)
 
-pub fn abs(d &Bigint, s &Bigint) {}
+pub fn abs(mut d Bigint, s Bigint) {
+	C.mpz_abs(&d, &s)
+}
 
 // #define mpz_add __gmpz_add
 fn C.mpz_add (d &Bigint, a &Bigint, b &Bigint)
@@ -726,7 +728,7 @@ fn C.mpz_get_str (str &char , l int, s &Bigint) &char
 
 pub fn (s Bigint) str_base (base int) string {
 	str_len := int(sizeinbase(&s, base)) + 2
-	mut n_str := []byte{len: str_len}
+	mut n_str := []byte{len: str_len + 1}
 	mut t_str := ''
 unsafe {	
 		c_str := C.mpz_get_str(&char(&n_str[0]), base, &s)
@@ -1578,10 +1580,29 @@ pub fn f_get_i64 (a Bigfloat) i64 {
 }
 
 // #define mpf_get_str __gmpf_get_str
-fn C.mpf_get_str (&char, &int, int, size_t, &Bigfloat) &char 
+fn C.mpf_get_str (&char, &int, int, u64, &Bigfloat) &char 
 
-pub fn f_get_str (s &char, exp_ptr &int, base int, n_digits u64, a Bigfloat) &char {
-	return C.mpf_get_str (s, exp_ptr, base, n_digits, &a)
+pub fn (a Bigfloat) str_base_digits (base int, n_digits u64) string {
+	mut t_str := ''
+	exp := int(0)
+	c_str := C.mpf_get_str (0, &exp, base, n_digits, &a)
+	unsafe {
+		c_str.vstring()
+		t_str = tos_clone(c_str)
+	}
+	return t_str
+}
+
+pub fn (a Bigfloat) str_base(b int) string {
+	return a.str_base_digits(b, 0)
+}
+
+pub fn (a Bigfloat) str_digits(d u64) string {
+	return a.str_base_digits(10, d)
+}
+
+pub fn (a Bigfloat) str() string {
+	return a.str_base_digits(10, 0)
 }
 
 // #define mpf_get_ui __gmpf_get_ui
@@ -1595,7 +1616,7 @@ pub fn f_get_u64 (a Bigfloat) u64 {
 fn C.mpf_init (&Bigfloat)
 
 pub fn f_new () Bigfloat {
-	r := Bigfloat{}
+	r := Bigfloat{ _mp_d: 0 }
 	C.mpf_init (&r)
 	return r
 }
@@ -1604,7 +1625,7 @@ pub fn f_new () Bigfloat {
 fn C.mpf_init2 (&Bigfloat, u64)
 
 pub fn f_new_w_prec (prec u64) Bigfloat {
-	r := Bigfloat{}
+	r := Bigfloat{ _mp_d: 0 }
 	C.mpf_init2 (&r, prec)
 	return r
 }
@@ -1616,7 +1637,7 @@ pub fn f_new_w_prec (prec u64) Bigfloat {
 fn C.mpf_init_set (&Bigfloat, &Bigfloat)
 
 pub fn f_clone (a Bigfloat) Bigfloat {
-	r := Bigfloat{}
+	r := Bigfloat{ _mp_d: 0 }
 	C.mpf_init_set (&r, &a)
 	return r
 }
@@ -1625,7 +1646,7 @@ pub fn f_clone (a Bigfloat) Bigfloat {
 fn C.mpf_init_set_d (&Bigfloat, f64)
 
 pub fn f_from_f64 (f f64) Bigfloat {
-	r := Bigfloat{}
+	r := Bigfloat{ _mp_d: 0 }
 	C.mpf_init_set_d (&r, f)
 	return r
 }
@@ -1634,7 +1655,7 @@ pub fn f_from_f64 (f f64) Bigfloat {
 fn C.mpf_init_set_si (&Bigfloat, i64)
 
 pub fn f_from_i64 (i i64) Bigfloat {
-	r := Bigfloat{}
+	r := Bigfloat{ _mp_d: 0 }
 	C.mpf_init_set_si (&r, i)
 	return r
 }
@@ -1643,7 +1664,7 @@ pub fn f_from_i64 (i i64) Bigfloat {
 fn C.mpf_init_set_str (&Bigfloat, &char, int) int
 
 pub fn f_from_str_base (str &char, base int) Bigfloat {
-	r := Bigfloat{}
+	r := Bigfloat{ _mp_d: 0 }
 	C.mpf_init_set_str (&r, str, base)
 	return r
 }
@@ -1652,7 +1673,7 @@ pub fn f_from_str_base (str &char, base int) Bigfloat {
 fn C.mpf_init_set_ui (&Bigfloat, u64)
 
 pub fn f_from_u64 (u u64) Bigfloat {
-	r := Bigfloat{}
+	r := Bigfloat{ _mp_d: 0 }
 	C.mpf_init_set_ui (&r, u)
 	return r
 }
@@ -1723,110 +1744,146 @@ pub fn f_random2 (mut r Bigfloat, max_size int, exp int) {
 // #define mpf_reldiff __gmpf_reldiff
 fn C.mpf_reldiff (&Bigfloat, &Bigfloat, &Bigfloat)
 
-// pub fn f_reldiff (&Bigfloat, &Bigfloat, &Bigfloat) {
-// 	C.mpf_reldiff (&Bigfloat, &Bigfloat, &Bigfloat)
-// }
+pub fn f_reldiff (mut rop Bigfloat, op1 Bigfloat, op2 Bigfloat) {
+	C.mpf_reldiff (&rop, &op1, &op2)
+}
 
-// // #define mpf_set __gmpf_set
-// fn C.mpf_set (&Bigfloat, &Bigfloat)
+// #define mpf_set __gmpf_set
+fn C.mpf_set (&Bigfloat, &Bigfloat)
 
-// pub fn f_set (&Bigfloat, &Bigfloat) {}
+pub fn f_set (mut a Bigfloat, b Bigfloat) {
+	C.mpf_set (&a, &b)
+}
 
-// // #define mpf_set_d __gmpf_set_d
-// fn C.mpf_set_d (&Bigfloat, f64)
+// #define mpf_set_d __gmpf_set_d
+fn C.mpf_set_d (&Bigfloat, f64)
 
-// pub fn f_set_f64 (&Bigfloat, f64) {}
+pub fn f_set_f64 (mut a Bigfloat, f f64) {
+	C.mpf_set_d (&a, f)
+}
 
-// // #define mpf_set_default_prec __gmpf_set_default_prec
-// fn C.mpf_set_default_prec (u64)
+// #define mpf_set_default_prec __gmpf_set_default_prec
+fn C.mpf_set_default_prec (u64)
 
-// pub fn f_set_default_prec (u64) {}
+pub fn f_set_default_prec (p u64) {
+	C.mpf_set_default_prec (p)
+}
 
-// // #define mpf_set_prec __gmpf_set_prec
-// fn C.mpf_set_prec (&Bigfloat, u64)
+// #define mpf_set_prec __gmpf_set_prec
+fn C.mpf_set_prec (&Bigfloat, u64)
 
-// pub fn f_set_prec (&Bigfloat, u64) {}
+pub fn f_set_prec (mut a Bigfloat, p u64) {
+	C.mpf_set_prec (&a, p)
+}
 
-// // #define mpf_set_prec_raw __gmpf_set_prec_raw
-// fn C.mpf_set_prec_raw (&Bigfloat, u64)
+// #define mpf_set_prec_raw __gmpf_set_prec_raw
+fn C.mpf_set_prec_raw (&Bigfloat, u64)
 
-// pub fn f_set_prec_raw (&Bigfloat, u64) {}
+pub fn f_set_prec_raw (mut a Bigfloat, p u64) {
+	C.mpf_set_prec_raw (&a, p)
+}
 
-// // #define mpf_set_q __gmpf_set_q
-// // fn C.mpf_set_q (&Bigfloat, mpq_srcptr)
+// #define mpf_set_q __gmpf_set_q
+// fn C.mpf_set_q (&Bigfloat, mpq_srcptr)
 
-// // pub fn f_set_q (&Bigfloat, mpq_srcptr) {}
+// pub fn f_set_q (&Bigfloat, mpq_srcptr) {}
 
-// // #define mpf_set_si __gmpf_set_si
-// fn C.mpf_set_si (&Bigfloat, i64)
+// #define mpf_set_si __gmpf_set_si
+fn C.mpf_set_si (&Bigfloat, i64)
 
-// pub fn f_set_i64 (&Bigfloat, i64) {}
+pub fn f_set_i64 (mut a Bigfloat, b i64) {
+	C.mpf_set_si (&a, b)
+}
 
-// // #define mpf_set_str __gmpf_set_str
-// fn C.mpf_set_str (&Bigfloat, &char, int) int
+// #define mpf_set_str __gmpf_set_str
+fn C.mpf_set_str (&Bigfloat, &char, int) int
 
-// pub fn f_set_str (&Bigfloat, &char, int) int {}
+pub fn f_set_str (mut a Bigfloat, str &char, base int) int {
+	return C.mpf_set_str (&a, str, base)
+}
 
-// // #define mpf_set_ui __gmpf_set_ui
-// fn C.mpf_set_ui (&Bigfloat, u64)
+// #define mpf_set_ui __gmpf_set_ui
+fn C.mpf_set_ui (&Bigfloat, u64)
 
-// pub fn f_set_u64 (&Bigfloat, u64) {}
+pub fn f_set_u64 (mut a Bigfloat, b u64) {
+	C.mpf_set_ui (&a, b)
+}
 
-// // #define mpf_set_z __gmpf_set_z
-// fn C.mpf_set_z (&Bigfloat, mpz_srcptr)
+// #define mpf_set_z __gmpf_set_z
+fn C.mpf_set_z (&Bigfloat, &Bigint)
 
-// pub fn f_set_z (&Bigfloat, mpz_srcptr) {}
+pub fn f_set_z (mut f Bigfloat, i Bigint) {
+	C.mpf_set_z (&f, &i)
+}
 
-// // #define mpf_size __gmpf_size
-// fn C.mpf_size (&Bigfloat) size_t
+// #define mpf_size __gmpf_size
+fn C.mpf_size (&Bigfloat) u64
 
-// pub fn f_size (&Bigfloat) size_t {}
+pub fn f_size (a Bigfloat) u64 {
+	return C.mpf_size (&a) 
+}
 
-// // #define mpf_sqrt __gmpf_sqrt
-// fn C.mpf_sqrt (&Bigfloat, &Bigfloat)
+// #define mpf_sqrt __gmpf_sqrt
+fn C.mpf_sqrt (&Bigfloat, &Bigfloat)
 
-// pub fn f_sqrt (&Bigfloat, &Bigfloat) {}
+pub fn f_sqrt (mut a Bigfloat, b Bigfloat) {
+	C.mpf_sqrt (&a, &b)
+}
 
-// // #define mpf_sqrt_ui __gmpf_sqrt_ui
-// fn C.mpf_sqrt_ui (&Bigfloat, u64)
+// #define mpf_sqrt_ui __gmpf_sqrt_ui
+fn C.mpf_sqrt_ui (&Bigfloat, u64)
 
-// pub fn f_sqrt_u64 (&Bigfloat, u64) {}
+pub fn f_sqrt_ui (mut a Bigfloat, b u64) {
+	C.mpf_sqrt_ui (&a, b)
+}
 
-// // #define mpf_sub __gmpf_sub
-// fn C.mpf_sub (&Bigfloat, &Bigfloat, &Bigfloat)
+// #define mpf_sub __gmpf_sub
+fn C.mpf_sub (&Bigfloat, &Bigfloat, &Bigfloat)
 
-// pub fn (a Bigfloat) - (b Bigfloat) Bigfloat {
-// 	mut r := f_new()
-// 	C.mpf_sub (&r, &a, &b)
-// 	return r
-// }
+pub fn (a Bigfloat) - (b Bigfloat) Bigfloat {
+	mut r := f_new()
+	C.mpf_sub (&r, &a, &b)
+	return r
+}
 
-// // #define mpf_sub_ui __gmpf_sub_ui
-// fn C.mpf_sub_ui (&Bigfloat, &Bigfloat, u64)
+// #define mpf_sub_ui __gmpf_sub_ui
+fn C.mpf_sub_ui (&Bigfloat, &Bigfloat, u64)
 
-// pub fn f_sub_u64 (&Bigfloat, &Bigfloat, u64) {}
+pub fn f_sub_ui (mut a Bigfloat, b Bigfloat, c u64) {
+	C.mpf_sub_ui (&a, &b, c)
+}
 
-// // #define mpf_swap __gmpf_swap
-// fn C.mpf_swap (&Bigfloat, &Bigfloat)
+// #define mpf_swap __gmpf_swap
+fn C.mpf_swap (&Bigfloat, &Bigfloat)
 
-// pub fn f_swap (&Bigfloat, &Bigfloat) {}
+pub fn f_swap (mut a Bigfloat, mut b Bigfloat) {
+	C.mpf_swap (&a, &b)
+}
 
-// // #define mpf_trunc __gmpf_trunc
-// fn C.mpf_trunc (&Bigfloat, &Bigfloat)
+// #define mpf_trunc __gmpf_trunc
+fn C.mpf_trunc (&Bigfloat, &Bigfloat)
 
-// pub fn f_trunc (&Bigfloat, &Bigfloat) {}
+pub fn f_trunc (mut a Bigfloat, b Bigfloat) {
+	C.mpf_trunc (&a, &b)
+}
 
-// // #define mpf_ui_div __gmpf_ui_div
-// fn C.mpf_ui_div (&Bigfloat, u64, &Bigfloat)
+// #define mpf_ui_div __gmpf_ui_div
+fn C.mpf_ui_div (&Bigfloat, u64, &Bigfloat)
 
-// pub fn f_u64_div (&Bigfloat, u64, &Bigfloat) {}
+pub fn f_ui_div (mut a Bigfloat, b u64, c Bigfloat) {
+	C.mpf_ui_div (&a, b, &c)
+}
 
-// // #define mpf_ui_sub __gmpf_ui_sub
-// fn C.mpf_ui_sub (&Bigfloat, u64, &Bigfloat)
+// #define mpf_ui_sub __gmpf_ui_sub
+fn C.mpf_ui_sub (&Bigfloat, u64, &Bigfloat)
 
-// pub fn f_u64_sub (&Bigfloat, u64, &Bigfloat) {}
+pub fn f_ui_sub (mut r Bigfloat, a u64, b Bigfloat) {
+	C.mpf_ui_sub (&r, a, &b)
+}
 
-// // #define mpf_urandomb __gmpf_urandomb
-// fn C.mpf_urandomb (Bigfloat, Randstate, u64)
+// #define mpf_urandomb __gmpf_urandomb
+fn C.mpf_urandomb (&Bigfloat, &Randstate, u64)
 
-// pub fn f_urandomb (Bigfloat, Randstate, u64) {}
+pub fn f_urandomb (mut r Bigfloat, mut rnd_st Randstate, b u64) {
+	C.mpf_urandomb (&r, &rnd_st, b)
+}

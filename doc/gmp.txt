@@ -37,6 +37,7 @@
 [94mfn[39m [36mdivisible_ui_p[39m(n [32mBigint[39m, q [32mu64[39m) [32mint[39m
 [94mfn[39m [36mdivmod[39m(n [32mBigint[39m, d [32mBigint[39m) (Bigint, Bigint)
 [94mfn[39m [36mdouble_factorial[39m(n [32mu64[39m) [32mBigint[39m
+[94mfn[39m [36mexport[39m(ret &[32mbyte[39m, count &[32mu64[39m, order [32mint[39m, size [32mu64[39m, endian [32mint[39m, nails [32mu64[39m, a [32mBigint[39m) [32mvoidptr[39m
 [94mfn[39m [36mfactorial[39m(n [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mfdiv_q[39m(n [32mBigint[39m, d [32mBigint[39m) [32mBigint[39m
 [94mfn[39m [36mfdiv_q_2exp[39m(n [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
@@ -57,8 +58,8 @@
 [94mfn[39m [36mfits_ushort_p[39m(n [32mBigint[39m) [32mint[39m
 [94mfn[39m [36mfrom_f64[39m(f [32mf64[39m) [32mBigint[39m
 [94mfn[39m [36mfrom_i64[39m(i [32mi64[39m) [32mBigint[39m
-[94mfn[39m [36mfrom_str[39m(s [32mstring[39m) [32mBigint[39m
-[94mfn[39m [36mfrom_str_base[39m(s [32mstring[39m, base [32mint[39m) [32mBigint[39m
+[94mfn[39m [36mfrom_str[39m(s [32mstring[39m) ?[32mBigint[39m
+[94mfn[39m [36mfrom_str_base[39m(s [32mstring[39m, base [32mint[39m) ?[32mBigint[39m
 [94mfn[39m [36mfrom_u64[39m(s [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mgcd[39m(a [32mBigint[39m, b [32mBigint[39m) [32mBigint[39m
 [94mfn[39m [36mgcd_u64[39m(a [32mBigint[39m, b [32mu64[39m) (Bigint, [32mu64[39m)
@@ -79,6 +80,7 @@
 [94mfn[39m [36mlucas_num2[39m(n [32mu64[39m) (Bigint, Bigint)
 [94mfn[39m [36mmillerrabin[39m(m [32mBigint[39m, n [32mint[39m) [32mint[39m
 [94mfn[39m [36mmod[39m(n [32mBigint[39m, d [32mBigint[39m) [32mBigint[39m
+[94mfn[39m [36mmpz_import[39m(count [32mu64[39m, order [32mint[39m, size [32mu64[39m, endian [32mint[39m, nails [32mu64[39m, buf &[32mbyte[39m) [32mBigint[39m
 [94mfn[39m [36mmul_2exp[39m(a [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mmul_i64[39m(a [32mBigint[39m, b [32mi64[39m) [32mBigint[39m
 [94mfn[39m [36mmul_u64[39m(a [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
@@ -111,7 +113,7 @@
 [94mfn[39m [36mset[39m([94mmut[39m a [32mBigint[39m, b [32mBigint[39m)
 [94mfn[39m [36mset_f64[39m(b [32mf64[39m) [32mBigint[39m
 [94mfn[39m [36mset_i64[39m(b [32mi64[39m) [32mBigint[39m
-[94mfn[39m [36mset_str[39m(s [32mstring[39m, base [32mint[39m) (Bigint, [32mint[39m)
+[94mfn[39m [36mset_str[39m([94mmut[39m a [32mBigint[39m, s [32mstring[39m, base [32mint[39m) [32mint[39m
 [94mfn[39m [36mset_u64[39m(b [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36msetbit[39m([94mmut[39m a [32mBigint[39m, b [32mu64[39m)
 [94mfn[39m [36msizeinbase[39m(s [32mBigint[39m, b [32mint[39m) [32mu64[39m

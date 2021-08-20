@@ -403,16 +403,16 @@ fn test_lucas_num2() {
 }
 
 fn test_export_import() {
-	n := gmp.from_str('4773753683898985936405984512709') or {panic('export')}
-	bits := gmp.sizeinbase(n, 2)
+	mut n := gmp.from_str('4773753683898985936405984512709') or {panic('export')}
+	mut bits := gmp.sizeinbase(n, 2)
 	// from mpz manual
 	size := sizeof(byte) // 1
 	numb := 8*size // - nail
-	count := int((bits + numb-1) / numb)
+	mut count := int((bits + numb-1) / numb)
 	// p = malloc (count * size)
 	buf := &[]byte{len:count}
 	res_count := u64(0)
-	res := gmp.export(buf.data, &res_count, 1, size, 0, 0, n)
+	mut res := gmp.export(buf.data, &res_count, 1, size, 0, 0, n)
 	unsafe { assert res == buf.data }
 	assert res_count == count
 	// println(buf)
@@ -421,8 +421,26 @@ fn test_export_import() {
 	// }
 	// print('\n')
 
-	m := gmp.mpz_import(res_count, 1, size, 0, 0, buf.data)
+	mut m := gmp.mpz_import(res_count, 1, size, 0, 0, buf.data)
 	assert gmp.cmp(m, n) == 0
-	m_str := m.str()
+	mut m_str := m.str()
 	assert m_str == '4773753683898985936405984512709'
+
+	// in a buffer allocated by gmp
+	n = gmp.from_str('87497899391299723389') or {panic('export_2')}
+	bits = gmp.sizeinbase(n, 2)
+	count = int((bits + numb-1) / numb)
+	// println(count)
+	res = gmp.export(0, &res_count, 1, size, 0, 0, n)
+	assert res_count == count
+	// buf2 := &byte(res)
+	// for i in 0..res_count {
+	// 	unsafe { print('0x${(*(buf2 + i)).hex_full()}, ')}
+	// }
+	// print('\n')
+
+	m = gmp.mpz_import(res_count, 1, size, 0, 0, res)
+	assert gmp.cmp(m, n) == 0
+	m_str = m.str()
+	assert m_str == '87497899391299723389'
 }

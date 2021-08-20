@@ -154,6 +154,9 @@
 <li class="open"><a href="#double_factorial">fn double_factorial</a>        <ul>
 </ul>
 </li>
+<li class="open"><a href="#export">fn export</a>        <ul>
+</ul>
+</li>
 <li class="open"><a href="#factorial">fn factorial</a>        <ul>
 </ul>
 </li>
@@ -278,6 +281,9 @@
 </ul>
 </li>
 <li class="open"><a href="#mod">fn mod</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#mpz_import">fn mpz_import</a>        <ul>
 </ul>
 </li>
 <li class="open"><a href="#mul_2exp">fn mul_2exp</a>        <ul>
@@ -667,6 +673,11 @@
 
 
 </section>
+						<section id="export" class="doc-node">
+							<div class="title"><h2>fn export <a href="#export">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">export</span><span class="token punctuation">(</span>ret <span class="token operator">&</span><span class="token builtin">byte</span><span class="token punctuation">,</span> count <span class="token operator">&</span><span class="token builtin">u64</span><span class="token punctuation">,</span> order <span class="token builtin">int</span><span class="token punctuation">,</span> size <span class="token builtin">u64</span><span class="token punctuation">,</span> endian <span class="token builtin">int</span><span class="token punctuation">,</span> nails <span class="token builtin">u64</span><span class="token punctuation">,</span> a Bigint<span class="token punctuation">)</span> <span class="token builtin">voidptr</span></code></pre>
+
+
+</section>
 						<section id="factorial" class="doc-node">
 							<div class="title"><h2>fn factorial <a href="#factorial">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">factorial</span><span class="token punctuation">(</span>n <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigint</code></pre>
 
@@ -768,12 +779,12 @@
 
 </section>
 						<section id="from_str" class="doc-node">
-							<div class="title"><h2>fn from_str <a href="#from_str">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">from_str</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">)</span> Bigint</code></pre>
+							<div class="title"><h2>fn from_str <a href="#from_str">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">from_str</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">)</span> ?Bigint</code></pre>
 <p>from_str is binding to mpz_init_set_str with default decimal base</p>
 
 </section>
 						<section id="from_str_base" class="doc-node">
-							<div class="title"><h2>fn from_str_base <a href="#from_str_base">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">from_str_base</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">,</span> base <span class="token builtin">int</span><span class="token punctuation">)</span> Bigint</code></pre>
+							<div class="title"><h2>fn from_str_base <a href="#from_str_base">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">from_str_base</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">,</span> base <span class="token builtin">int</span><span class="token punctuation">)</span> ?Bigint</code></pre>
 
 
 </section>
@@ -874,6 +885,11 @@
 </section>
 						<section id="mod" class="doc-node">
 							<div class="title"><h2>fn mod <a href="#mod">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">mod</span><span class="token punctuation">(</span>n Bigint<span class="token punctuation">,</span> d Bigint<span class="token punctuation">)</span> Bigint</code></pre>
+
+
+</section>
+						<section id="mpz_import" class="doc-node">
+							<div class="title"><h2>fn mpz_import <a href="#mpz_import">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">mpz_import</span><span class="token punctuation">(</span>count <span class="token builtin">u64</span><span class="token punctuation">,</span> order <span class="token builtin">int</span><span class="token punctuation">,</span> size <span class="token builtin">u64</span><span class="token punctuation">,</span> endian <span class="token builtin">int</span><span class="token punctuation">,</span> nails <span class="token builtin">u64</span><span class="token punctuation">,</span> buf <span class="token operator">&</span><span class="token builtin">byte</span><span class="token punctuation">)</span> Bigint</code></pre>
 
 
 </section>
@@ -1038,7 +1054,7 @@
 
 </section>
 						<section id="set_str" class="doc-node">
-							<div class="title"><h2>fn set_str <a href="#set_str">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">set_str</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">,</span> base <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>Bigint<span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span></code></pre>
+							<div class="title"><h2>fn set_str <a href="#set_str">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">set_str</span><span class="token punctuation">(</span><span class="token keyword">mut</span> a Bigint<span class="token punctuation">,</span> s <span class="token builtin">string</span><span class="token punctuation">,</span> base <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
 
 
 </section>
@@ -1244,7 +1260,7 @@
 </section>
 
 						<div class="footer">
-							Powered by vdoc. Generated on: 15 Aug 2021 12:32:47
+							Powered by vdoc. Generated on: 20 Aug 2021 14:29:09
 						</div>
 					</div>
 					

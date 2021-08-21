@@ -23,5 +23,8 @@ These header files have been patched for tcc and are necessary.
 ### License ###
 GMP is under the dual licenses, [GNU LGPL v3](https://www.gnu.org/licenses/lgpl.html) and [GNU GPL v2](https://www.gnu.org/licenses/gpl-2.0.html). V_gmp is under the [MIT-license](https://raw.githubusercontent.com/VincentLaisney/v_gmp/main/LICENSE).
 
+### Work in progress
+The branch float is experimental.
+
 ### To do ###
-Porting of Bigfloat and BigRational of GMP
+Porting BigRational of GMP.

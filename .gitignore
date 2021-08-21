@@ -10,3 +10,4 @@ gmp_test
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+gmp_float_test

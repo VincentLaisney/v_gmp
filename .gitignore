@@ -1,6 +1,7 @@
 # Binaries for programs and plugins
 *.so
 gmp_test
+gmp_float_test
 
 # Test binary, built with `go test -c`
 *.test

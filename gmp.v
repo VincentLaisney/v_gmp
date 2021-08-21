@@ -1590,7 +1590,23 @@ pub fn (a Bigfloat) str_base_digits (base int, n_digits u64) string {
 		c_str.vstring()
 		t_str = tos_clone(c_str)
 	}
-	return t_str
+		mut t_sign := ''
+		if t_str.len > 0 && t_str[0] == `-`{
+			t_sign = '-'
+			t_str = t_str[1..]
+		}
+		t_str = if exp >= 1 && exp < t_str.len {
+			t_str[0..exp] + '.' + t_str[exp..t_str.len]
+		} else if exp == 0 {
+			'0' + t_str
+		} else if exp < 1 {
+			t_str[0..1] + '.' + t_str[1..] + 'e${exp - 1}'
+		} else if exp >= t_str.len && exp <= n_digits {
+			t_str + '0'.repeat(exp - t_str.len) 
+		} else if exp > n_digits {
+			t_str[0..1] + '.' + t_str[1..] + 'e${exp - 1}'
+		} else { '0' }
+	return t_sign + t_str
 }
 
 pub fn (a Bigfloat) str_base(b int) string {

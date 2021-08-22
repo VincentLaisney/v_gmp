@@ -30,6 +30,14 @@ mut:
 
 type Bigint = C.__mpz_struct
 
+struct C.__mpq_struct
+{
+	_mp_num  __mpz_struct 
+	_mp_den  __mpz_struct 
+}
+
+type Bigrational = C.__mpq_struct mpq_t;
+
 struct C.__mpf_struct
 {
 	_mp_prec int		/* Max precision, in number of `mp_limb_t's.

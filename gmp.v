@@ -32,11 +32,11 @@ type Bigint = C.__mpz_struct
 
 struct C.__mpq_struct
 {
-	_mp_num  __mpz_struct 
-	_mp_den  __mpz_struct 
+	_mp_num  C.__mpz_struct 
+	_mp_den  C.__mpz_struct 
 }
 
-type Bigrational = C.__mpq_struct mpq_t;
+type Bigrational = C.__mpq_struct
 
 struct C.__mpf_struct
 {
@@ -92,7 +92,7 @@ struct C.__gmp_randstate_struct
 //     void *_mp_lc;         /* Pointer to function pointers structure.  */
 //   } _mp_algdata;
 } 
-type Randstate = C.__gmp_randstate_struct 
+type Randstate = C.__gmp_randstate_struct
 
 [unsafe]
 fn (mut b Randstate) free() {

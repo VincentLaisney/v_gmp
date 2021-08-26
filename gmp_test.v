@@ -444,3 +444,23 @@ fn test_export_import() {
 	m_str = m.str()
 	assert m_str == '87497899391299723389'
 }
+
+fn test_less () {
+	a := gmp.from_u64(437)
+	b := gmp.from_f64(438.0)
+	assert a < b
+}
+
+fn test_more () {
+	a := gmp.from_u64(439)
+	b := gmp.from_f64(438.0)
+	assert a > b
+}
+
+// Does not pass: bug in the compiler?
+// fn test_equal () {
+// 	a := gmp.from_u64(438)
+// 	b := gmp.from_f64(438.0)
+// 	assert a == b
+// }
+

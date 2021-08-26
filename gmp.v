@@ -62,6 +62,16 @@ fn C.mp_set_memory_functions (fn (u64) voidptr,
 				      fn (voidptr, u64, u64) voidptr,
 				      fn (voidptr, u64) voidptr)
 
+/* void *(*alloc_func_ptr)(size t),
+void *(*realloc_func_ptr)(void *, size t, size t),
+void (*free_func_ptr)(void *, size t)) */
+pub fn mp_set_memory_functions (alloc_func_ptr fn (u64) voidptr,
+				     realloc_func_ptr fn (voidptr, u64, u64) voidptr,
+				     free_func_ptr fn (voidptr, u64) voidptr) {
+	C.mp_set_memory_functions (alloc_func_ptr, realloc_func_ptr, free_func_ptr)
+}
+
+
 fn my_realloc (ptr &byte, old_size u64, new_size u64) &byte {
 	unsafe { return v_realloc (ptr, int(new_size)) }
 }

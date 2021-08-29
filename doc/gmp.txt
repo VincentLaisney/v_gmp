@@ -1,6 +1,5 @@
 [94mmodule[39m [32mgmp[39m
 
-<<<<<<< HEAD
 [94mfn[39m [36mabs[39m(d &[32mBigint[39m, s &[32mBigint[39m)
 [94mfn[39m [36madd_u64[39m(a [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36maddmul[39m(a [32mBigint[39m, b [32mBigint[39m) [32mBigint[39m
@@ -16,23 +15,6 @@
 [94mfn[39m [36mcdiv_r[39m(n [32mBigint[39m, d [32mBigint[39m) [32mBigint[39m
 [94mfn[39m [36mcdiv_r_2exp[39m(n [32mBigint[39m, e [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mcdiv_r_u64[39m(n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
-=======
-[94mfn[39m [36mabs[39m([94mmut[39m d [32mBigint[39m, s [32mBigint[39m)
-[94mfn[39m [36madd_u64[39m([94mmut[39m d [32mBigint[39m, a [32mBigint[39m, b [32mu64[39m)
-[94mfn[39m [36maddmul[39m([94mmut[39m d [32mBigint[39m, a [32mBigint[39m, b [32mBigint[39m)
-[94mfn[39m [36maddmul_u64[39m([94mmut[39m d [32mBigint[39m, a [32mBigint[39m, b [32mu64[39m)
-[94mfn[39m [36mand[39m([94mmut[39m d [32mBigint[39m, a [32mBigint[39m, b [32mBigint[39m)
-[94mfn[39m [36mbin_u64[39m([94mmut[39m d [32mBigint[39m, n [32mBigint[39m, k [32mu64[39m)
-[94mfn[39m [36mbin_uiui[39m([94mmut[39m d [32mBigint[39m, n [32mu64[39m, k [32mu64[39m)
-[94mfn[39m [36mcdiv_q[39m([94mmut[39m d [32mBigint[39m, a [32mBigint[39m, b [32mBigint[39m)
-[94mfn[39m [36mcdiv_q_2exp[39m([94mmut[39m q [32mBigint[39m, a [32mBigint[39m, e [32mu64[39m)
-[94mfn[39m [36mcdiv_q_u64[39m([94mmut[39m q [32mBigint[39m, a [32mBigint[39m, b [32mu64[39m) [32mu64[39m
-[94mfn[39m [36mcdiv_qr[39m([94mmut[39m q [32mBigint[39m, [94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mBigint[39m)
-[94mfn[39m [36mcdiv_qr_u64[39m([94mmut[39m q [32mBigint[39m, [94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
-[94mfn[39m [36mcdiv_r[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mBigint[39m)
-[94mfn[39m [36mcdiv_r_2exp[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, e [32mu64[39m)
-[94mfn[39m [36mcdiv_r_u64[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
->>>>>>> float/float
 [94mfn[39m [36mcdiv_u64[39m(n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
 [94mfn[39m [36mclear[39m([94mmut[39m a [32mBigint[39m)
 [94mfn[39m [36mclrbit[39m([94mmut[39m a [32mBigint[39m, b [32mu64[39m)
@@ -54,19 +36,8 @@
 [94mfn[39m [36mdivisible_p[39m(n [32mBigint[39m, q [32mBigint[39m) [32mint[39m
 [94mfn[39m [36mdivisible_ui_p[39m(n [32mBigint[39m, q [32mu64[39m) [32mint[39m
 [94mfn[39m [36mdivmod[39m(n [32mBigint[39m, d [32mBigint[39m) (Bigint, Bigint)
-<<<<<<< HEAD
 [94mfn[39m [36mdouble_factorial[39m(n [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mexport[39m(ret &[32mbyte[39m, count &[32mu64[39m, order [32mint[39m, size [32mu64[39m, endian [32mint[39m, nails [32mu64[39m, a [32mBigint[39m) [32mvoidptr[39m
-[94mfn[39m [36mfactorial[39m(n [32mu64[39m) [32mBigint[39m
-[94mfn[39m [36mfdiv_q[39m(n [32mBigint[39m, d [32mBigint[39m) [32mBigint[39m
-[94mfn[39m [36mfdiv_q_2exp[39m(n [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
-[94mfn[39m [36mfdiv_q_u64[39m(n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
-[94mfn[39m [36mfdiv_qr[39m(n [32mBigint[39m, d [32mBigint[39m) (Bigint, Bigint)
-[94mfn[39m [36mfdiv_qr_u64[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
-[94mfn[39m [36mfdiv_r[39m(n [32mBigint[39m, d [32mBigint[39m) [32mBigint[39m
-[94mfn[39m [36mfdiv_r_2exp[39m(n [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
-[94mfn[39m [36mfdiv_r_u64[39m(n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
-=======
 [94mfn[39m [36mf_abs[39m(b [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m [36mf_add_u64[39m(a [32mBigfloat[39m, b [32mu64[39m) [32mBigfloat[39m
 [94mfn[39m [36mf_ceil[39m(a [32mBigfloat[39m) [32mBigfloat[39m
@@ -124,22 +95,21 @@
 [94mfn[39m [36mf_ui_sub[39m(a [32mu64[39m, b [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m [36mf_urandomb[39m([94mmut[39m rnd_st [32mRandstate[39m, b [32mu64[39m) [32mBigfloat[39m
 [94mfn[39m [36mfactorial[39m(n [32mu64[39m) [32mBigint[39m
-[94mfn[39m [36mfdiv_q[39m([94mmut[39m q [32mBigint[39m, n [32mBigint[39m, d [32mBigint[39m)
-[94mfn[39m [36mfdiv_q_2exp[39m([94mmut[39m q [32mBigint[39m, n [32mBigint[39m, b [32mu64[39m)
-[94mfn[39m [36mfdiv_q_u64[39m([94mmut[39m q [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
-[94mfn[39m [36mfdiv_qr[39m([94mmut[39m q [32mBigint[39m, [94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mBigint[39m)
-[94mfn[39m [36mfdiv_qr_u64[39m([94mmut[39m q [32mBigint[39m, [94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
-[94mfn[39m [36mfdiv_r[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mBigint[39m)
-[94mfn[39m [36mfdiv_r_2exp[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, b [32mu64[39m)
-[94mfn[39m [36mfdiv_r_u64[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
->>>>>>> float/float
+[94mfn[39m [36mfdiv_q[39m(n [32mBigint[39m, d [32mBigint[39m) [32mBigint[39m
+[94mfn[39m [36mfdiv_q_2exp[39m(n [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
+[94mfn[39m [36mfdiv_q_u64[39m(n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
+[94mfn[39m [36mfdiv_qr[39m(n [32mBigint[39m, d [32mBigint[39m) (Bigint, Bigint)
+[94mfn[39m [36mfdiv_qr_u64[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
+[94mfn[39m [36mfdiv_r[39m(n [32mBigint[39m, d [32mBigint[39m) [32mBigint[39m
+[94mfn[39m [36mfdiv_r_2exp[39m(n [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
+[94mfn[39m [36mfdiv_r_u64[39m(n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
 [94mfn[39m [36mfdiv_u64[39m(n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
 [94mfn[39m [36mfibonacci[39m(n [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mfibonacci2[39m(n [32mu64[39m) (Bigint, Bigint)
 [94mfn[39m [36mfits_sint_p[39m(n [32mBigint[39m) [32mint[39m
 [94mfn[39m [36mfits_slong_p[39m(n [32mBigint[39m) [32mint[39m
 [94mfn[39m [36mfits_sshort_p[39m(n [32mBigint[39m) [32mint[39m
-[94mfn[39m [36mfits_u64_p[39m(n [32mBigint[39m) [32mint[39m
+[94mfn[39m [36mfits_uint_p[39m(n [32mBigint[39m) [32mint[39m
 [94mfn[39m [36mfits_ulong_p[39m(n [32mBigint[39m) [32mint[39m
 [94mfn[39m [36mfits_ushort_p[39m(n [32mBigint[39m) [32mint[39m
 [94mfn[39m [36mfrom_f64[39m(f [32mf64[39m) [32mBigint[39m
@@ -165,22 +135,14 @@
 [94mfn[39m [36mlucas_num[39m(n [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mlucas_num2[39m(n [32mu64[39m) (Bigint, Bigint)
 [94mfn[39m [36mmillerrabin[39m(m [32mBigint[39m, n [32mint[39m) [32mint[39m
-<<<<<<< HEAD
 [94mfn[39m [36mmod[39m(n [32mBigint[39m, d [32mBigint[39m) [32mBigint[39m
+[94mfn[39m [36mmp_set_memory_functions[39m(alloc_func_ptr [94mfn[39m ([32mu64[39m) [32mvoidptr[39m, realloc_func_ptr [94mfn[39m ([32mvoidptr[39m, [32mu64[39m, [32mu64[39m) [32mvoidptr[39m, free_func_ptr [94mfn[39m ([32mvoidptr[39m, [32mu64[39m) [32mvoidptr[39m)
 [94mfn[39m [36mmpz_import[39m(count [32mu64[39m, order [32mint[39m, size [32mu64[39m, endian [32mint[39m, nails [32mu64[39m, buf &[32mbyte[39m) [32mBigint[39m
 [94mfn[39m [36mmul_2exp[39m(a [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mmul_i64[39m(a [32mBigint[39m, b [32mi64[39m) [32mBigint[39m
 [94mfn[39m [36mmul_u64[39m(a [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mmulti_factorial[39m(n [32mu64[39m, m [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mneg[39m(a [32mBigint[39m) [32mBigint[39m
-=======
-[94mfn[39m [36mmod[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mBigint[39m)
-[94mfn[39m [36mmp_set_memory_functions[39m(alloc_func_ptr [94mfn[39m ([32mu64[39m) [32mvoidptr[39m, realloc_func_ptr [94mfn[39m ([32mvoidptr[39m, [32mu64[39m, [32mu64[39m) [32mvoidptr[39m, free_func_ptr [94mfn[39m ([32mvoidptr[39m, [32mu64[39m) [32mvoidptr[39m)
-[94mfn[39m [36mmul_2exp[39m([94mmut[39m r [32mBigint[39m, a [32mBigint[39m, b [32mu64[39m)
-[94mfn[39m [36mmul_i64[39m([94mmut[39m r [32mBigint[39m, a [32mBigint[39m, b [32mi64[39m)
-[94mfn[39m [36mmul_u64[39m([94mmut[39m r [32mBigint[39m, a [32mBigint[39m, b [32mu64[39m)
-[94mfn[39m [36mneg[39m([94mmut[39m r [32mBigint[39m, a [32mBigint[39m)
->>>>>>> float/float
 [94mfn[39m [36mnew[39m() [32mBigint[39m
 [94mfn[39m [36mnextprime[39m(a [32mBigint[39m) [32mBigint[39m
 [94mfn[39m [36mperfect_power_p[39m(s [32mBigint[39m) [32mint[39m
@@ -206,14 +168,8 @@
 [94mfn[39m [36mscan0[39m(s [32mBigint[39m, n [32mu64[39m) [32mu64[39m
 [94mfn[39m [36mscan1[39m(s [32mBigint[39m, n [32mu64[39m) [32mu64[39m
 [94mfn[39m [36mset[39m([94mmut[39m a [32mBigint[39m, b [32mBigint[39m)
-<<<<<<< HEAD
 [94mfn[39m [36mset_f64[39m(b [32mf64[39m) [32mBigint[39m
 [94mfn[39m [36mset_i64[39m(b [32mi64[39m) [32mBigint[39m
-=======
-[94mfn[39m [36mset_d[39m([94mmut[39m a [32mBigint[39m, b [32mf64[39m)
-[94mfn[39m [36mset_f[39m(a [32mBigint[39m, b [32mBigfloat[39m)
-[94mfn[39m [36mset_i64[39m([94mmut[39m a [32mBigint[39m, b [32mi64[39m)
->>>>>>> float/float
 [94mfn[39m [36mset_str[39m([94mmut[39m a [32mBigint[39m, s [32mstring[39m, base [32mint[39m) [32mint[39m
 [94mfn[39m [36mset_u64[39m(b [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36msetbit[39m([94mmut[39m a [32mBigint[39m, b [32mu64[39m)
@@ -223,19 +179,11 @@
 [94mfn[39m [36msubmul[39m(b [32mBigint[39m, c [32mBigint[39m) [32mBigint[39m
 [94mfn[39m [36msubmul_u64[39m(b [32mBigint[39m, c [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mswap[39m([94mmut[39m a [32mBigint[39m, [94mmut[39m b [32mBigint[39m)
-<<<<<<< HEAD
 [94mfn[39m [36mtdiv_q_2exp[39m(n [32mBigint[39m, b [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mtdiv_q_u64[39m(n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
 [94mfn[39m [36mtdiv_qr_u64[39m(n [32mBigint[39m, d [32mu64[39m) (Bigint, Bigint, [32mu64[39m)
 [94mfn[39m [36mtdiv_r_2exp[39m(n [32mBigint[39m, d [32mu64[39m) [32mBigint[39m
 [94mfn[39m [36mtdiv_r_u64[39m(n [32mBigint[39m, d [32mu64[39m) (Bigint, [32mu64[39m)
-=======
-[94mfn[39m [36mtdiv_q_2exp[39m([94mmut[39m q [32mBigint[39m, n [32mBigint[39m, b [32mu64[39m)
-[94mfn[39m [36mtdiv_q_u64[39m([94mmut[39m q [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
-[94mfn[39m [36mtdiv_qr_u64[39m([94mmut[39m q [32mBigint[39m, [94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
-[94mfn[39m [36mtdiv_r_2exp[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m)
-[94mfn[39m [36mtdiv_r_u64[39m([94mmut[39m r [32mBigint[39m, n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
->>>>>>> float/float
 [94mfn[39m [36mtdiv_u64[39m(n [32mBigint[39m, d [32mu64[39m) [32mu64[39m
 [94mfn[39m [36mtstbit[39m(a [32mBigint[39m, b [32mu64[39m) [32mint[39m
 [94mfn[39m [36mu64_kronecker[39m(a [32mu64[39m, b [32mBigint[39m) [32mint[39m
@@ -245,10 +193,7 @@
 [94mfn[39m [36murandomb_ui[39m([94mmut[39m s [32mRandstate[39m, n [32mu64[39m) [32mu64[39m
 [94mfn[39m [36murandomm[39m([94mmut[39m s [32mRandstate[39m, n [32mBigint[39m) [32mBigint[39m
 [94mfn[39m [36murandomm_ui[39m([94mmut[39m s [32mRandstate[39m, n [32mu64[39m) [32mu64[39m
-<<<<<<< HEAD
 [94mfn[39m [36mxor[39m(a [32mBigint[39m, b [32mBigint[39m) [32mBigint[39m
-=======
-[94mfn[39m [36mxor[39m([94mmut[39m r [32mBigint[39m, a [32mBigint[39m, b [32mBigint[39m)
 [94mfn[39m (a [32mBigfloat[39m) + (b [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m (a [32mBigfloat[39m) / (b [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m (a [32mBigfloat[39m) [36mstr_base_digits[39m(base [32mint[39m, n_digits [32mu64[39m) [32mstring[39m
@@ -258,7 +203,6 @@
 [94mfn[39m (a [32mBigfloat[39m) * (b [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m (a [32mBigfloat[39m) [36mf_neg[39m() [32mBigfloat[39m
 [94mfn[39m (a [32mBigfloat[39m) - (b [32mBigfloat[39m) [32mBigfloat[39m
->>>>>>> float/float
 [94mfn[39m (a [32mBigint[39m) + (b [32mBigint[39m) [32mBigint[39m
 [94mfn[39m ([94mmut[39m a [32mBigint[39m) [36minc[39m()
 [94mfn[39m ([94mmut[39m a [32mBigint[39m) [36mdec[39m()

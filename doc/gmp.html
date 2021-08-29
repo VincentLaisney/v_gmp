@@ -5,9 +5,10 @@
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>gmp | vdoc</title>
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -147,7 +148,178 @@
 <li class="open"><a href="#divisible_ui_p">fn divisible_ui_p</a>        <ul>
 </ul>
 </li>
-<li class="open"><a href="#fac_u64">fn fac_u64</a>        <ul>
+<li class="open"><a href="#divmod">fn divmod</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_abs">fn f_abs</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_add_u64">fn f_add_u64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_ceil">fn f_ceil</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_clear">fn f_clear</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_clone">fn f_clone</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_cmp">fn f_cmp</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_cmp_d">fn f_cmp_d</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_cmp_i64">fn f_cmp_i64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_cmp_u64">fn f_cmp_u64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_cmp_z">fn f_cmp_z</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_div_2exp">fn f_div_2exp</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_div_u64">fn f_div_u64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_fits_i16_p">fn f_fits_i16_p</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_fits_i64_p">fn f_fits_i64_p</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_fits_int_p">fn f_fits_int_p</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_fits_u16_p">fn f_fits_u16_p</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_fits_u32_p">fn f_fits_u32_p</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_fits_u64_p">fn f_fits_u64_p</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_floor">fn f_floor</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_from_f64">fn f_from_f64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_from_i64">fn f_from_i64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_from_str">fn f_from_str</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_from_str_base">fn f_from_str_base</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_from_u64">fn f_from_u64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_get_default_prec">fn f_get_default_prec</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_get_f64">fn f_get_f64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_get_f64_2exp">fn f_get_f64_2exp</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_get_i64">fn f_get_i64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_get_prec">fn f_get_prec</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_get_u64">fn f_get_u64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_integer_p">fn f_integer_p</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_mul_2exp">fn f_mul_2exp</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_mul_u64">fn f_mul_u64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_new">fn f_new</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_new_w_prec">fn f_new_w_prec</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_pow_u64">fn f_pow_u64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_random2">fn f_random2</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_reldiff">fn f_reldiff</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set">fn f_set</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set_default_prec">fn f_set_default_prec</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set_f64">fn f_set_f64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set_i64">fn f_set_i64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set_prec">fn f_set_prec</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set_prec_raw">fn f_set_prec_raw</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set_str">fn f_set_str</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set_u64">fn f_set_u64</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_set_z">fn f_set_z</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_size">fn f_size</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_sqrt">fn f_sqrt</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_sqrt_ui">fn f_sqrt_ui</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_sub_ui">fn f_sub_ui</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_swap">fn f_swap</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_trunc">fn f_trunc</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_ui_div">fn f_ui_div</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_ui_sub">fn f_ui_sub</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#f_urandomb">fn f_urandomb</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#factorial">fn factorial</a>        <ul>
 </ul>
 </li>
 <li class="open"><a href="#fdiv_q">fn fdiv_q</a>        <ul>
@@ -192,7 +364,7 @@
 <li class="open"><a href="#fits_sshort_p">fn fits_sshort_p</a>        <ul>
 </ul>
 </li>
-<li class="open"><a href="#fits_uint_p">fn fits_uint_p</a>        <ul>
+<li class="open"><a href="#fits_u64_p">fn fits_u64_p</a>        <ul>
 </ul>
 </li>
 <li class="open"><a href="#fits_ulong_p">fn fits_ulong_p</a>        <ul>
@@ -268,6 +440,9 @@
 </ul>
 </li>
 <li class="open"><a href="#mod">fn mod</a>        <ul>
+</ul>
+</li>
+<li class="open"><a href="#mp_set_memory_functions">fn mp_set_memory_functions</a>        <ul>
 </ul>
 </li>
 <li class="open"><a href="#mul_2exp">fn mul_2exp</a>        <ul>
@@ -363,6 +538,9 @@
 <li class="open"><a href="#set_d">fn set_d</a>        <ul>
 </ul>
 </li>
+<li class="open"><a href="#set_f">fn set_f</a>        <ul>
+</ul>
+</li>
 <li class="open"><a href="#set_i64">fn set_i64</a>        <ul>
 </ul>
 </li>
@@ -403,9 +581,6 @@
 </ul>
 </li>
 <li class="open"><a href="#tdiv_q_u64">fn tdiv_q_u64</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#tdiv_qr">fn tdiv_qr</a>        <ul>
 </ul>
 </li>
 <li class="open"><a href="#tdiv_qr_u64">fn tdiv_qr_u64</a>        <ul>
@@ -450,6 +625,18 @@
 <li class="open"><a href="#xor">fn xor</a>        <ul>
 </ul>
 </li>
+<li class="open"><a href="#Bigfloat.+">type Bigfloat</a>        <ul>
+<li><a href="#Bigfloat.+">fn +</a></li>
+<li><a href="#Bigfloat./">fn /</a></li>
+<li><a href="#Bigfloat.str_base_digits">fn str_base_digits</a></li>
+<li><a href="#Bigfloat.str_base">fn str_base</a></li>
+<li><a href="#Bigfloat.str_digits">fn str_digits</a></li>
+<li><a href="#Bigfloat.str">fn str</a></li>
+<li><a href="#Bigfloat.*">fn *</a></li>
+<li><a href="#Bigfloat.f_neg">fn f_neg</a></li>
+<li><a href="#Bigfloat.-">fn -</a></li>
+</ul>
+</li>
 <li class="open"><a href="#Bigint.+">type Bigint</a>        <ul>
 <li><a href="#Bigint.+">fn +</a></li>
 <li><a href="#Bigint.inc">fn inc</a></li>
@@ -482,7 +669,7 @@
 </section>
 
 						<section id="abs" class="doc-node">
-							<div class="title"><h2>fn abs <a href="#abs">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">abs</span><span class="token punctuation">(</span>d <span class="token operator">&</span>Bigint<span class="token punctuation">,</span> s <span class="token operator">&</span>Bigint<span class="token punctuation">)</span></code></pre>
+							<div class="title"><h2>fn abs <a href="#abs">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">abs</span><span class="token punctuation">(</span><span class="token keyword">mut</span> d Bigint<span class="token punctuation">,</span> s Bigint<span class="token punctuation">)</span></code></pre>
 
 
 </section>
@@ -656,8 +843,293 @@
 
 
 </section>
-						<section id="fac_u64" class="doc-node">
-							<div class="title"><h2>fn fac_u64 <a href="#fac_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">fac_u64</span><span class="token punctuation">(</span><span class="token keyword">mut</span> r Bigint<span class="token punctuation">,</span> n <span class="token builtin">u64</span><span class="token punctuation">)</span></code></pre>
+						<section id="divmod" class="doc-node">
+							<div class="title"><h2>fn divmod <a href="#divmod">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">divmod</span><span class="token punctuation">(</span>n Bigint<span class="token punctuation">,</span> d Bigint<span class="token punctuation">)</span> <span class="token punctuation">(</span>Bigint<span class="token punctuation">,</span> Bigint<span class="token punctuation">)</span></code></pre>
+
+
+</section>
+						<section id="f_abs" class="doc-node">
+							<div class="title"><h2>fn f_abs <a href="#f_abs">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_abs</span><span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_add_u64" class="doc-node">
+							<div class="title"><h2>fn f_add_u64 <a href="#f_add_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_add_u64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_ceil" class="doc-node">
+							<div class="title"><h2>fn f_ceil <a href="#f_ceil">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_ceil</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_clear" class="doc-node">
+							<div class="title"><h2>fn f_clear <a href="#f_clear">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_clear</span><span class="token punctuation">(</span><span class="token keyword">mut</span> a Bigfloat<span class="token punctuation">)</span></code></pre>
+
+
+</section>
+						<section id="f_clone" class="doc-node">
+							<div class="title"><h2>fn f_clone <a href="#f_clone">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_clone</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_cmp" class="doc-node">
+							<div class="title"><h2>fn f_cmp <a href="#f_cmp">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_cmp</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b Bigfloat<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_cmp_d" class="doc-node">
+							<div class="title"><h2>fn f_cmp_d <a href="#f_cmp_d">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_cmp_d</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b <span class="token builtin">f64</span><span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_cmp_i64" class="doc-node">
+							<div class="title"><h2>fn f_cmp_i64 <a href="#f_cmp_i64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_cmp_i64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b <span class="token builtin">i64</span><span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_cmp_u64" class="doc-node">
+							<div class="title"><h2>fn f_cmp_u64 <a href="#f_cmp_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_cmp_u64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b <span class="token builtin">u64</span><span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_cmp_z" class="doc-node">
+							<div class="title"><h2>fn f_cmp_z <a href="#f_cmp_z">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_cmp_z</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b Bigint<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_div_2exp" class="doc-node">
+							<div class="title"><h2>fn f_div_2exp <a href="#f_div_2exp">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_div_2exp</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> e <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_div_u64" class="doc-node">
+							<div class="title"><h2>fn f_div_u64 <a href="#f_div_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_div_u64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_fits_i16_p" class="doc-node">
+							<div class="title"><h2>fn f_fits_i16_p <a href="#f_fits_i16_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_fits_i16_p</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_fits_i64_p" class="doc-node">
+							<div class="title"><h2>fn f_fits_i64_p <a href="#f_fits_i64_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_fits_i64_p</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_fits_int_p" class="doc-node">
+							<div class="title"><h2>fn f_fits_int_p <a href="#f_fits_int_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_fits_int_p</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_fits_u16_p" class="doc-node">
+							<div class="title"><h2>fn f_fits_u16_p <a href="#f_fits_u16_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_fits_u16_p</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_fits_u32_p" class="doc-node">
+							<div class="title"><h2>fn f_fits_u32_p <a href="#f_fits_u32_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_fits_u32_p</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_fits_u64_p" class="doc-node">
+							<div class="title"><h2>fn f_fits_u64_p <a href="#f_fits_u64_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_fits_u64_p</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_floor" class="doc-node">
+							<div class="title"><h2>fn f_floor <a href="#f_floor">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_floor</span><span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_from_f64" class="doc-node">
+							<div class="title"><h2>fn f_from_f64 <a href="#f_from_f64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_from_f64</span><span class="token punctuation">(</span>f <span class="token builtin">f64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_from_i64" class="doc-node">
+							<div class="title"><h2>fn f_from_i64 <a href="#f_from_i64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_from_i64</span><span class="token punctuation">(</span>i <span class="token builtin">i64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_from_str" class="doc-node">
+							<div class="title"><h2>fn f_from_str <a href="#f_from_str">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_from_str</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_from_str_base" class="doc-node">
+							<div class="title"><h2>fn f_from_str_base <a href="#f_from_str_base">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_from_str_base</span><span class="token punctuation">(</span>str <span class="token builtin">string</span><span class="token punctuation">,</span> base <span class="token builtin">int</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_from_u64" class="doc-node">
+							<div class="title"><h2>fn f_from_u64 <a href="#f_from_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_from_u64</span><span class="token punctuation">(</span>u <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_get_default_prec" class="doc-node">
+							<div class="title"><h2>fn f_get_default_prec <a href="#f_get_default_prec">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_get_default_prec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">u64</span></code></pre>
+
+
+</section>
+						<section id="f_get_f64" class="doc-node">
+							<div class="title"><h2>fn f_get_f64 <a href="#f_get_f64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_get_f64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">f64</span></code></pre>
+
+
+</section>
+						<section id="f_get_f64_2exp" class="doc-node">
+							<div class="title"><h2>fn f_get_f64_2exp <a href="#f_get_f64_2exp">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_get_f64_2exp</span><span class="token punctuation">(</span>e_ptr <span class="token operator">&</span><span class="token builtin">i64</span><span class="token punctuation">,</span> a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">f64</span></code></pre>
+
+
+</section>
+						<section id="f_get_i64" class="doc-node">
+							<div class="title"><h2>fn f_get_i64 <a href="#f_get_i64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_get_i64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">i64</span></code></pre>
+
+
+</section>
+						<section id="f_get_prec" class="doc-node">
+							<div class="title"><h2>fn f_get_prec <a href="#f_get_prec">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_get_prec</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">u64</span></code></pre>
+
+
+</section>
+						<section id="f_get_u64" class="doc-node">
+							<div class="title"><h2>fn f_get_u64 <a href="#f_get_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_get_u64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">u64</span></code></pre>
+
+
+</section>
+						<section id="f_integer_p" class="doc-node">
+							<div class="title"><h2>fn f_integer_p <a href="#f_integer_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_integer_p</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_mul_2exp" class="doc-node">
+							<div class="title"><h2>fn f_mul_2exp <a href="#f_mul_2exp">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_mul_2exp</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> e <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_mul_u64" class="doc-node">
+							<div class="title"><h2>fn f_mul_u64 <a href="#f_mul_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_mul_u64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_new" class="doc-node">
+							<div class="title"><h2>fn f_new <a href="#f_new">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_new</span><span class="token punctuation">(</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_new_w_prec" class="doc-node">
+							<div class="title"><h2>fn f_new_w_prec <a href="#f_new_w_prec">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_new_w_prec</span><span class="token punctuation">(</span>prec <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_pow_u64" class="doc-node">
+							<div class="title"><h2>fn f_pow_u64 <a href="#f_pow_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_pow_u64</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">,</span> b <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_random2" class="doc-node">
+							<div class="title"><h2>fn f_random2 <a href="#f_random2">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_random2</span><span class="token punctuation">(</span>max_size <span class="token builtin">int</span><span class="token punctuation">,</span> exp <span class="token builtin">int</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_reldiff" class="doc-node">
+							<div class="title"><h2>fn f_reldiff <a href="#f_reldiff">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_reldiff</span><span class="token punctuation">(</span>op1 Bigfloat<span class="token punctuation">,</span> op2 Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_set" class="doc-node">
+							<div class="title"><h2>fn f_set <a href="#f_set">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set</span><span class="token punctuation">(</span><span class="token keyword">mut</span> a Bigfloat<span class="token punctuation">,</span> b Bigfloat<span class="token punctuation">)</span></code></pre>
+
+
+</section>
+						<section id="f_set_default_prec" class="doc-node">
+							<div class="title"><h2>fn f_set_default_prec <a href="#f_set_default_prec">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set_default_prec</span><span class="token punctuation">(</span>p <span class="token builtin">u64</span><span class="token punctuation">)</span></code></pre>
+
+
+</section>
+						<section id="f_set_f64" class="doc-node">
+							<div class="title"><h2>fn f_set_f64 <a href="#f_set_f64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set_f64</span><span class="token punctuation">(</span>f <span class="token builtin">f64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_set_i64" class="doc-node">
+							<div class="title"><h2>fn f_set_i64 <a href="#f_set_i64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set_i64</span><span class="token punctuation">(</span>b <span class="token builtin">i64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_set_prec" class="doc-node">
+							<div class="title"><h2>fn f_set_prec <a href="#f_set_prec">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set_prec</span><span class="token punctuation">(</span>p <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_set_prec_raw" class="doc-node">
+							<div class="title"><h2>fn f_set_prec_raw <a href="#f_set_prec_raw">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set_prec_raw</span><span class="token punctuation">(</span>p <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_set_str" class="doc-node">
+							<div class="title"><h2>fn f_set_str <a href="#f_set_str">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set_str</span><span class="token punctuation">(</span><span class="token keyword">mut</span> a Bigfloat<span class="token punctuation">,</span> str <span class="token builtin">string</span><span class="token punctuation">,</span> base <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+
+
+</section>
+						<section id="f_set_u64" class="doc-node">
+							<div class="title"><h2>fn f_set_u64 <a href="#f_set_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set_u64</span><span class="token punctuation">(</span>b <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_set_z" class="doc-node">
+							<div class="title"><h2>fn f_set_z <a href="#f_set_z">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_set_z</span><span class="token punctuation">(</span>i Bigint<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_size" class="doc-node">
+							<div class="title"><h2>fn f_size <a href="#f_size">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_size</span><span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token builtin">u64</span></code></pre>
+
+
+</section>
+						<section id="f_sqrt" class="doc-node">
+							<div class="title"><h2>fn f_sqrt <a href="#f_sqrt">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_sqrt</span><span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_sqrt_ui" class="doc-node">
+							<div class="title"><h2>fn f_sqrt_ui <a href="#f_sqrt_ui">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_sqrt_ui</span><span class="token punctuation">(</span>b <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_sub_ui" class="doc-node">
+							<div class="title"><h2>fn f_sub_ui <a href="#f_sub_ui">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_sub_ui</span><span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">,</span> c <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_swap" class="doc-node">
+							<div class="title"><h2>fn f_swap <a href="#f_swap">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_swap</span><span class="token punctuation">(</span><span class="token keyword">mut</span> a Bigfloat<span class="token punctuation">,</span> <span class="token keyword">mut</span> b Bigfloat<span class="token punctuation">)</span></code></pre>
+
+
+</section>
+						<section id="f_trunc" class="doc-node">
+							<div class="title"><h2>fn f_trunc <a href="#f_trunc">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_trunc</span><span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_ui_div" class="doc-node">
+							<div class="title"><h2>fn f_ui_div <a href="#f_ui_div">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_ui_div</span><span class="token punctuation">(</span>b <span class="token builtin">u64</span><span class="token punctuation">,</span> c Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_ui_sub" class="doc-node">
+							<div class="title"><h2>fn f_ui_sub <a href="#f_ui_sub">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_ui_sub</span><span class="token punctuation">(</span>a <span class="token builtin">u64</span><span class="token punctuation">,</span> b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="f_urandomb" class="doc-node">
+							<div class="title"><h2>fn f_urandomb <a href="#f_urandomb">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">f_urandomb</span><span class="token punctuation">(</span><span class="token keyword">mut</span> rnd_st Randstate<span class="token punctuation">,</span> b <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="factorial" class="doc-node">
+							<div class="title"><h2>fn factorial <a href="#factorial">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">factorial</span><span class="token punctuation">(</span>n <span class="token builtin">u64</span><span class="token punctuation">)</span> Bigint</code></pre>
 
 
 </section>
@@ -731,8 +1203,8 @@
 
 
 </section>
-						<section id="fits_uint_p" class="doc-node">
-							<div class="title"><h2>fn fits_uint_p <a href="#fits_uint_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">fits_uint_p</span><span class="token punctuation">(</span>n Bigint<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
+						<section id="fits_u64_p" class="doc-node">
+							<div class="title"><h2>fn fits_u64_p <a href="#fits_u64_p">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">fits_u64_p</span><span class="token punctuation">(</span>n Bigint<span class="token punctuation">)</span> <span class="token builtin">int</span></code></pre>
 
 
 </section>
@@ -858,6 +1330,11 @@
 </section>
 						<section id="mod" class="doc-node">
 							<div class="title"><h2>fn mod <a href="#mod">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">mod</span><span class="token punctuation">(</span><span class="token keyword">mut</span> r Bigint<span class="token punctuation">,</span> n Bigint<span class="token punctuation">,</span> d Bigint<span class="token punctuation">)</span></code></pre>
+
+
+</section>
+						<section id="mp_set_memory_functions" class="doc-node">
+							<div class="title"><h2>fn mp_set_memory_functions <a href="#mp_set_memory_functions">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">mp_set_memory_functions</span><span class="token punctuation">(</span>alloc_func_ptr <span class="token keyword">fn</span> <span class="token punctuation">(</span><span class="token builtin">u64</span><span class="token punctuation">)</span> <span class="token builtin">voidptr</span><span class="token punctuation">,</span> realloc_func_ptr <span class="token keyword">fn</span> <span class="token punctuation">(</span><span class="token builtin">voidptr</span><span class="token punctuation">,</span> <span class="token builtin">u64</span><span class="token punctuation">,</span> <span class="token builtin">u64</span><span class="token punctuation">)</span> <span class="token builtin">voidptr</span><span class="token punctuation">,</span> free_func_ptr <span class="token keyword">fn</span> <span class="token punctuation">(</span><span class="token builtin">voidptr</span><span class="token punctuation">,</span> <span class="token builtin">u64</span><span class="token punctuation">)</span> <span class="token builtin">voidptr</span><span class="token punctuation">)</span></code></pre>
 
 
 </section>
@@ -1016,6 +1493,11 @@
 
 
 </section>
+						<section id="set_f" class="doc-node">
+							<div class="title"><h2>fn set_f <a href="#set_f">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">set_f</span><span class="token punctuation">(</span>a Bigint<span class="token punctuation">,</span> b Bigfloat<span class="token punctuation">)</span></code></pre>
+
+
+</section>
 						<section id="set_i64" class="doc-node">
 							<div class="title"><h2>fn set_i64 <a href="#set_i64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">set_i64</span><span class="token punctuation">(</span><span class="token keyword">mut</span> a Bigint<span class="token punctuation">,</span> b <span class="token builtin">i64</span><span class="token punctuation">)</span></code></pre>
 
@@ -1086,11 +1568,6 @@
 
 
 </section>
-						<section id="tdiv_qr" class="doc-node">
-							<div class="title"><h2>fn tdiv_qr <a href="#tdiv_qr">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">tdiv_qr</span><span class="token punctuation">(</span><span class="token keyword">mut</span> q Bigint<span class="token punctuation">,</span> <span class="token keyword">mut</span> r Bigint<span class="token punctuation">,</span> n Bigint<span class="token punctuation">,</span> d Bigint<span class="token punctuation">)</span></code></pre>
-
-
-</section>
 						<section id="tdiv_qr_u64" class="doc-node">
 							<div class="title"><h2>fn tdiv_qr_u64 <a href="#tdiv_qr_u64">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">tdiv_qr_u64</span><span class="token punctuation">(</span><span class="token keyword">mut</span> q Bigint<span class="token punctuation">,</span> <span class="token keyword">mut</span> r Bigint<span class="token punctuation">,</span> n Bigint<span class="token punctuation">,</span> d <span class="token builtin">u64</span><span class="token punctuation">)</span> <span class="token builtin">u64</span></code></pre>
 
@@ -1158,6 +1635,51 @@
 </section>
 						<section id="xor" class="doc-node">
 							<div class="title"><h2>fn xor <a href="#xor">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">xor</span><span class="token punctuation">(</span><span class="token keyword">mut</span> r Bigint<span class="token punctuation">,</span> a Bigint<span class="token punctuation">,</span> b Bigint<span class="token punctuation">)</span></code></pre>
+
+
+</section>
+						<section id="Bigfloat.+" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) + <a href="#Bigfloat.+">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="Bigfloat./" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) / <a href="#Bigfloat./">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="Bigfloat.str_base_digits" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) str_base_digits <a href="#Bigfloat.str_base_digits">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token function">str_base_digits</span><span class="token punctuation">(</span>base <span class="token builtin">int</span><span class="token punctuation">,</span> n_digits <span class="token builtin">u64</span><span class="token punctuation">)</span> <span class="token builtin">string</span></code></pre>
+
+
+</section>
+						<section id="Bigfloat.str_base" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) str_base <a href="#Bigfloat.str_base">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token function">str_base</span><span class="token punctuation">(</span>b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">string</span></code></pre>
+
+
+</section>
+						<section id="Bigfloat.str_digits" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) str_digits <a href="#Bigfloat.str_digits">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token function">str_digits</span><span class="token punctuation">(</span>d <span class="token builtin">u64</span><span class="token punctuation">)</span> <span class="token builtin">string</span></code></pre>
+
+
+</section>
+						<section id="Bigfloat.str" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) str <a href="#Bigfloat.str">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span></code></pre>
+
+
+</section>
+						<section id="Bigfloat.*" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) * <a href="#Bigfloat.*">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="Bigfloat.f_neg" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) f_neg <a href="#Bigfloat.f_neg">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token function">f_neg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="Bigfloat.-" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) - <a href="#Bigfloat.-">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
 
 
 </section>
@@ -1243,7 +1765,7 @@
 </section>
 
 						<div class="footer">
-							Powered by vdoc. Generated on: 2 Aug 2021 09:46:18
+							Powered by vdoc. Generated on: 29 Aug 2021 15:47:04
 						</div>
 					</div>
 					

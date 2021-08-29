@@ -176,7 +176,7 @@ typedef long int		mp_size_t;
 typedef long int		mp_exp_t;
 #endif
 
-typedef struct
+typedef struct __mpq_struct
 {
   __mpz_struct _mp_num;
   __mpz_struct _mp_den;
@@ -185,7 +185,7 @@ typedef struct
 typedef __mpq_struct MP_RAT;    /* gmp 1 source compatibility */
 typedef __mpq_struct mpq_t[1];
 
-typedef struct
+typedef struct __mpf_struct
 {
   int _mp_prec;			/* Max precision, in number of `mp_limb_t's.
 				   Set by mpf_init and modified by

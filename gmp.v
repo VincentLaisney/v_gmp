@@ -105,8 +105,12 @@ fn my_free (ptr &byte, size u64) {
 	unsafe{ free (ptr) }
 }
 
+fn my_malloc(size u64) voidptr {
+	return unsafe { malloc(int(size)) }
+}
+
 fn init() {
-	C.mp_set_memory_functions(malloc, my_realloc, my_free)
+	C.mp_set_memory_functions(my_malloc, my_realloc, my_free)
 }
 
 [unsafe]

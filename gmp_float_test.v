@@ -25,6 +25,13 @@ fn test_str() {
 	assert c.str() == '-450000'
 }
 
+// doesn't pass. Bug in the compiler?
+// fn test_equal() {
+// 	a := gmp.f_from_f64(45.0)
+// 	b := gmp.f_from_str('45')
+// 	assert a == b
+// }
+
 fn test_add () {
 	a := gmp.f_from_i64(-12)
 	b := gmp.f_from_u64(44)

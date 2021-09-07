@@ -457,10 +457,9 @@ fn test_more () {
 	assert a > b
 }
 
-// Does not pass: bug in the compiler?
-// fn test_equal () {
-// 	a := gmp.from_u64(438)
-// 	b := gmp.from_f64(438.0)
-// 	assert a == b
-// }
+fn test_equal () {
+	a := gmp.from_u64(438)
+	b := gmp.from_f64(438.0)
+	assert a == b
+}
 
